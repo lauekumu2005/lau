@@ -22,7 +22,7 @@
             <input type="email" id="email" placeholder="Email" required>
             <input type="password" id="password" placeholder="Mot de passe" required>
             <select id="role" required>
-                <option value="">Sélectionnez votre rôle</option>
+                <option value="role">Sélectionnez votre rôle</option>
                 <option value="receptionniste">Réceptionniste</option>
                 <option value="caissier">Caissier</option>
             </select>
