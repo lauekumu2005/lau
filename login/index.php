@@ -94,16 +94,16 @@
                 // Redirection basée sur le rôle
                 switch(role) {
                     case 'medecin':
-                        window.location.href = '../medecin/index.html';
+                        window.location.href = '../medecin/index.php';
                         break;
                     case 'admin':
-                        window.location.href = '../hopital/index.html';
+                        window.location.href = '../hopital/index.php';
                         break;
                     case 'receptionniste':
-                        window.location.href = '../hopital/index.html';
+                        window.location.href = '../hopital/index.php';
                         break;
                     case 'caissier':
-                        window.location.href = '../hopital/paiement.html';
+                        window.location.href = '../hopital/paiement.php';
                         break;
                 }
             } else {

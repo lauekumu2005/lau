@@ -657,10 +657,10 @@
         <div class="sidebar-header">
             <h3>Hôpital Central</h3>
         </div>
-        <a href="index.html"><i class="fas fa-home"></i> Tableau de Bord</a>
-        <a href="patients.html"><i class="fas fa-user-injured"></i> Mes Patients</a>
-        <a href="recherche-patients.html" class="active"><i class="fas fa-search"></i> Recherche Patients</a>
-        <a href="dossiers.html"><i class="fas fa-folder"></i> Dossiers</a>
+        <a href="index.php"><i class="fas fa-home"></i> Tableau de Bord</a>
+        <a href="patients.php"><i class="fas fa-user-injured"></i> Mes Patients</a>
+        <a href="recherche-patients.php" class="active"><i class="fas fa-search"></i> Recherche Patients</a>
+        <a href="dossiers.php"><i class="fas fa-folder"></i> Dossiers</a>
     </div>
 
     <div class="main-content">
@@ -915,7 +915,7 @@
                         <p>${isApproved ? 'Accès au dossier autorisé' : 'Accès au dossier refusé'}</p>
                         ${isApproved ? `
                             <span class="details">Vous pouvez maintenant consulter le dossier complet du patient</span>
-                            <a href="patient-details.html?id=${patient.id}" class="btn-access">
+                            <a href="patient-details.php?id=${patient.id}" class="btn-access">
                                 <i class="fas fa-eye"></i> Voir le dossier complet
                             </a>
                         ` : `
@@ -943,7 +943,7 @@
                         <i class="fas fa-check-circle"></i>
                         <p>Accès au dossier autorisé</p>
                         <span class="details">Vous pouvez maintenant consulter le dossier complet du patient</span>
-                        <a href="patient-details.html?id=${patient.id}" class="btn-access">
+                        <a href="patient-details.php?id=${patient.id}" class="btn-access">
                             <i class="fas fa-eye"></i> Voir le dossier complet
                         </a>
                     </div>

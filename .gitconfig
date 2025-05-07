@@ -1,0 +1,31 @@
+[user]
+    name = Votre Nom
+    email = votre.email@example.com
+
+[core]
+    editor = code --wait
+    autocrlf = true
+
+[init]
+    defaultBranch = main
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    visual = !gitk
+
+[push]
+    default = simple
+
+[credential]
+    helper = store
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true 
