@@ -19,7 +19,7 @@
             padding: 20px;
             height: 100vh;
             position: fixed;
-            width: 280px;
+            width: 281px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
