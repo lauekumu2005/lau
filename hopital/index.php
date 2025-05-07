@@ -196,7 +196,7 @@
                     <div class="stats-value">150</div>
                     <div class="stats-label">
                         <i class="fas fa-procedures"></i>
-                        Patients hospitalisés
+                        Patients hospitalisé
                     </div>
                     <div class="progress">
                         <div class="progress-bar bg-success" style="width: 75%"></div>
