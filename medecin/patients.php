@@ -314,10 +314,10 @@
         <div class="sidebar-header">
             <h3>Hôpital Central</h3>
         </div>
-        <a href="index.html"><i class="fas fa-home"></i> Tableau de Bord</a>
-        <a href="patients.html" class="active"><i class="fas fa-user-injured"></i> Mes Patients</a>
-        <a href="recherche-patients.html"><i class="fas fa-search"></i> Recherche Patients</a>
-        <a href="dossiers.html"><i class="fas fa-folder"></i> Dossiers</a>
+        <a href="index.php"><i class="fas fa-home"></i> Tableau de Bord</a>
+        <a href="patients.php" class="active"><i class="fas fa-user-injured"></i> Mes Patients</a>
+        <a href="recherche-patients.php"><i class="fas fa-search"></i> Recherche Patients</a>
+        <a href="dossiers.php"><i class="fas fa-folder"></i> Dossiers</a>
     </div>
 
     <div class="main-content">
@@ -356,7 +356,7 @@
                     </div>
                 </div>
                 <div class="patient-actions">
-                    <button class="btn-action" onclick="window.location.href='patient-details.html?id=1'">
+                    <button class="btn-action" onclick="window.location.href='patient-details.php?id=1'">
                         <i class="fas fa-eye"></i> Voir le dossier
                     </button>
                 </div>
@@ -385,7 +385,7 @@
                     </div>
                 </div>
                 <div class="patient-actions">
-                    <button class="btn-action" onclick="window.location.href='patient-details.html?id=2'">
+                    <button class="btn-action" onclick="window.location.href='patient-details.php?id=2'">
                         <i class="fas fa-eye"></i> Voir le dossier
                     </button>
                 </div>
@@ -602,7 +602,7 @@
                 // Stocker l'ID du patient dans le localStorage
                 localStorage.setItem('currentPatientId', patientId);
                 // Rediriger vers la page de détails
-                window.location.href = `patient-details.html?id=${patientId}`;
+                window.location.href = `patient-details.php?id=${patientId}`;
             }
         }
 

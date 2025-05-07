@@ -512,7 +512,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">
+        <a href="index.php" class="navbar-brand">
             <i class="fas fa-hospital"></i>
             Dopaho - Système de Partage de Dossiers Médicaux
         </a>

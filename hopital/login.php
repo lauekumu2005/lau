@@ -38,10 +38,10 @@
             // Simulation de l'authentification
             if (role === 'receptionniste') {
                 alert('Connexion réussie ! Redirection vers la page du réceptionniste.');
-                window.location.href = 'receptionniste.html';
+                window.location.href = 'receptionniste.php';
             } else if (role === 'caissier') {
                 alert('Connexion réussie ! Redirection vers la page du caissier.');
-                window.location.href = 'caissier.html';
+                window.location.href = 'caissier.php';
             } else {
                 alert('Rôle non reconnu. Veuillez sélectionner un rôle valide.');
             }

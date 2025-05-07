@@ -337,14 +337,14 @@
         <div class="sidebar-header">
             <h3>Hôpital Central</h3>
         </div>
-        <a href="index.html"><i class="fas fa-home"></i> Tableau de Bord</a>
-        <a href="patients.html"><i class="fas fa-user-injured"></i> Mes Patients</a>
-        <a href="recherche-patients.html"><i class="fas fa-search"></i> Recherche Patients</a>
-        <a href="dossiers.html"><i class="fas fa-folder"></i> Dossiers</a>
+        <a href="index.php"><i class="fas fa-home"></i> Tableau de Bord</a>
+        <a href="patients.php"><i class="fas fa-user-injured"></i> Mes Patients</a>
+        <a href="recherche-patients.php"><i class="fas fa-search"></i> Recherche Patients</a>
+        <a href="dossiers.php"><i class="fas fa-folder"></i> Dossiers</a>
     </div>
 
     <div class="main-content">
-        <a href="patients.html" class="btn-back">
+        <a href="patients.php" class="btn-back">
             <i class="fas fa-arrow-left"></i> Retour à la liste
         </a>
 
@@ -492,8 +492,8 @@
                                 <i class="fas fa-plus"></i> Ajouter un antécédent
                             </button>
                         </div>
-                        <button class="btn-print-all" onclick="printAllHistory()">
-                            <i class="fas fa-print"></i> Imprimer tous les antécédents
+                        <button class="btn-print-all" onclick="window.location.href='dossiers.php'">
+                            <i class="fas fa-eye"></i> Voir plus
                         </button>
                     </div>
                     <div class="history-list">
@@ -506,9 +506,11 @@
                                     Tension artérielle légèrement élevée.
                                 </div>
                             </div>
-                            <button class="btn-print" onclick="printHistory(this)">
-                                <i class="fas fa-print"></i> Imprimer
-                            </button>
+                            <div class="treatment-actions">
+                                <button class="btn-view" onclick="window.location.href='dossiers.php?id=1'">
+                                    <i class="fas fa-eye"></i> Voir plus
+                                </button>
+                            </div>
                         </div>
                         <div class="history-item">
                             <div class="history-content">
@@ -518,9 +520,11 @@
                                     Glycémie stabilisée. Ajustement du traitement.
                                 </div>
                             </div>
-                            <button class="btn-print" onclick="printHistory(this)">
-                                <i class="fas fa-print"></i> Imprimer
-                            </button>
+                            <div class="treatment-actions">
+                                <button class="btn-view" onclick="window.location.href='dossiers.php?id=2'">
+                                    <i class="fas fa-eye"></i> Voir plus
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

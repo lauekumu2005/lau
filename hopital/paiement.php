@@ -123,58 +123,55 @@
             margin-bottom: 15px;
         }
 
-        .payment-id {
-            font-size: 0.9rem;
-            color: var(--light-text);
-        }
-
-        .payment-amount {
-            font-size: 1.5rem;
+        .payment-title {
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-color);
         }
 
         .payment-status {
-            padding: 5px 15px;
+            padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
         }
 
         .status-paid {
-            background: var(--success-color);
-            color: white;
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
         }
 
         .status-pending {
-            background: var(--warning-color);
-            color: white;
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning-color);
         }
 
         .status-overdue {
-            background: var(--danger-color);
-            color: white;
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger-color);
         }
 
         .payment-details {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
         .detail-item {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+            flex-direction: column;
         }
 
         .detail-label {
+            font-size: 0.8rem;
             color: var(--light-text);
+            margin-bottom: 5px;
         }
 
         .detail-value {
             font-weight: 500;
+            color: var(--dark-text);
         }
 
         .payment-actions {
@@ -187,26 +184,27 @@
             padding: 8px 15px;
             border-radius: 8px;
             border: none;
-            color: white;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .btn-view {
-            background: var(--accent-color);
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .btn-print {
-            background: var(--secondary-color);
+            background-color: var(--light-bg);
+            color: var(--dark-text);
         }
 
         .btn-edit {
-            background: var(--warning-color);
+            background-color: var(--warning-color);
+            color: white;
         }
 
         .stats-card {
@@ -229,58 +227,33 @@
             font-size: 0.9rem;
         }
 
+        .filter-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
         .filter-tags {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
             flex-wrap: wrap;
+            margin-top: 15px;
         }
 
         .filter-tag {
             padding: 5px 15px;
-            background: var(--light-bg);
             border-radius: 20px;
-            font-size: 0.9rem;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .filter-tag:hover {
-            background: var(--accent-color);
+        .filter-tag:hover, .filter-tag.active {
+            background-color: var(--primary-color);
             color: white;
-        }
-
-        .filter-tag.active {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: auto;
-        }
-
-        .user-profile img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .user-info {
-            color: white;
-        }
-
-        .user-info h6 {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        .user-info small {
-            color: rgba(255,255,255,0.6);
         }
 
         .add-payment-btn {
@@ -290,7 +263,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: var(--accent-color);
+            background-color: var(--primary-color);
             color: white;
             display: flex;
             align-items: center;
@@ -303,7 +276,7 @@
 
         .add-payment-btn:hover {
             transform: scale(1.1);
-            background: var(--primary-color);
+            background-color: var(--secondary-color);
         }
     </style>
 </head>
@@ -331,158 +304,181 @@
     </div>
 
     <div class="main-content">
-        <div class="welcome-section">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h2>Gestion des Paiements</h2>
-                    <p class="text-muted">Gérez les paiements et factures</p>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Gestion des Paiements</h2>
+            <div class="d-flex gap-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Rechercher un paiement...">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
-                <div class="text-end">
-                    <p class="mb-0">Total Reçu: <strong>45,000 €</strong></p>
-                    <p class="mb-0">En Attente: <strong>12,500 €</strong></p>
-                </div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-download"></i> Exporter
+                </button>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-md-3">
                 <div class="stats-card">
-                    <div class="stats-value">45,000 €</div>
-                    <div class="stats-label">Total Reçu</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stats-card">
-                    <div class="stats-value">12,500 €</div>
-                    <div class="stats-label">En Attente</div>
+                    <div class="stats-value">€45,250</div>
+                    <div class="stats-label">Total reçu ce mois</div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="stats-card">
-                    <div class="stats-value">150</div>
-                    <div class="stats-label">Factures</div>
+                    <div class="stats-value">€12,500</div>
+                    <div class="stats-label">En attente</div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="stats-card">
-                    <div class="stats-value">45</div>
-                    <div class="stats-label">En Retard</div>
+                    <div class="stats-value">156</div>
+                    <div class="stats-label">Factures émises</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-value">€3,200</div>
+                    <div class="stats-label">Retards de paiement</div>
                 </div>
             </div>
         </div>
 
-        <div class="filter-tags">
-            <span class="filter-tag active">Tous</span>
-            <span class="filter-tag">Payés</span>
-            <span class="filter-tag">En Attente</span>
-            <span class="filter-tag">En Retard</span>
-            <span class="filter-tag">Consultations</span>
-            <span class="filter-tag">Hospitalisations</span>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="payment-card">
-                    <div class="payment-header">
-                        <div>
-                            <div class="payment-id">Facture #F12345</div>
-                            <div class="payment-amount">1,200 €</div>
-                        </div>
-                        <span class="payment-status status-paid">Payé</span>
-                    </div>
-                    <div class="payment-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Patient</span>
-                            <span class="detail-value">Jean Dupont</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Date</span>
-                            <span class="detail-value">20/03/2024</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Type</span>
-                            <span class="detail-value">Hospitalisation</span>
-                        </div>
-                    </div>
-                    <div class="payment-actions">
-                        <button class="action-btn btn-view"><i class="fas fa-eye"></i> Voir</button>
-                        <button class="action-btn btn-print"><i class="fas fa-print"></i> Imprimer</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="payment-card">
-                    <div class="payment-header">
-                        <div>
-                            <div class="payment-id">Facture #F12346</div>
-                            <div class="payment-amount">350 €</div>
-                        </div>
-                        <span class="payment-status status-pending">En Attente</span>
-                    </div>
-                    <div class="payment-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Patient</span>
-                            <span class="detail-value">Marie Martin</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Date</span>
-                            <span class="detail-value">19/03/2024</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Type</span>
-                            <span class="detail-value">Consultation</span>
-                        </div>
-                    </div>
-                    <div class="payment-actions">
-                        <button class="action-btn btn-view"><i class="fas fa-eye"></i> Voir</button>
-                        <button class="action-btn btn-edit"><i class="fas fa-edit"></i> Modifier</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="payment-card">
-                    <div class="payment-header">
-                        <div>
-                            <div class="payment-id">Facture #F12347</div>
-                            <div class="payment-amount">2,500 €</div>
-                        </div>
-                        <span class="payment-status status-overdue">En Retard</span>
-                    </div>
-                    <div class="payment-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Patient</span>
-                            <span class="detail-value">Pierre Durand</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Date</span>
-                            <span class="detail-value">15/03/2024</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Type</span>
-                            <span class="detail-value">Chirurgie</span>
-                        </div>
-                    </div>
-                    <div class="payment-actions">
-                        <button class="action-btn btn-view"><i class="fas fa-eye"></i> Voir</button>
-                        <button class="action-btn btn-edit"><i class="fas fa-edit"></i> Modifier</button>
-                    </div>
-                </div>
+        <div class="filter-section">
+            <h5>Filtres</h5>
+            <div class="filter-tags">
+                <span class="filter-tag active">Tous</span>
+                <span class="filter-tag">Payés</span>
+                <span class="filter-tag">En attente</span>
+                <span class="filter-tag">En retard</span>
+                <span class="filter-tag">Ce mois</span>
+                <span class="filter-tag">Ce trimestre</span>
             </div>
         </div>
 
-        <div class="add-payment-btn">
+        <div class="payment-list">
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="payment-title">Consultation Dr. Smith</div>
+                    <span class="payment-status status-paid">Payé</span>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Patient</span>
+                        <span class="detail-value">Jean Dupont</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Date</span>
+                        <span class="detail-value">15/03/2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Montant</span>
+                        <span class="detail-value">€120.00</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Méthode</span>
+                        <span class="detail-value">Carte bancaire</span>
+                    </div>
+                </div>
+                <div class="payment-actions">
+                    <button class="action-btn btn-view">
+                        <i class="fas fa-eye"></i> Voir détails
+                    </button>
+                    <button class="action-btn btn-print">
+                        <i class="fas fa-print"></i> Imprimer
+                    </button>
+                    <button class="action-btn btn-edit">
+                        <i class="fas fa-edit"></i> Modifier
+                    </button>
+                </div>
+            </div>
+
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="payment-title">Analyse sanguine</div>
+                    <span class="payment-status status-pending">En attente</span>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Patient</span>
+                        <span class="detail-value">Marie Martin</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Date</span>
+                        <span class="detail-value">14/03/2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Montant</span>
+                        <span class="detail-value">€85.00</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Méthode</span>
+                        <span class="detail-value">En attente</span>
+                    </div>
+                </div>
+                <div class="payment-actions">
+                    <button class="action-btn btn-view">
+                        <i class="fas fa-eye"></i> Voir détails
+                    </button>
+                    <button class="action-btn btn-print">
+                        <i class="fas fa-print"></i> Imprimer
+                    </button>
+                    <button class="action-btn btn-edit">
+                        <i class="fas fa-edit"></i> Modifier
+                    </button>
+                </div>
+            </div>
+
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="payment-title">Radiographie</div>
+                    <span class="payment-status status-overdue">En retard</span>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Patient</span>
+                        <span class="detail-value">Pierre Durand</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Date</span>
+                        <span class="detail-value">10/03/2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Montant</span>
+                        <span class="detail-value">€150.00</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Méthode</span>
+                        <span class="detail-value">Non payé</span>
+                    </div>
+                </div>
+                <div class="payment-actions">
+                    <button class="action-btn btn-view">
+                        <i class="fas fa-eye"></i> Voir détails
+                    </button>
+                    <button class="action-btn btn-print">
+                        <i class="fas fa-print"></i> Imprimer
+                    </button>
+                    <button class="action-btn btn-edit">
+                        <i class="fas fa-edit"></i> Modifier
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-payment-btn" onclick="openNewPaymentModal()">
             <i class="fas fa-plus"></i>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Animation des cartes au survol
+        // Animation des cartes de paiement
         document.querySelectorAll('.payment-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
+                card.style.transform = 'translateY(-5px)';
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0)';
@@ -494,17 +490,15 @@
             tag.addEventListener('click', () => {
                 document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
                 tag.classList.add('active');
+                // Logique de filtrage à implémenter
             });
         });
 
-        // Animation du bouton d'ajout
-        const addButton = document.querySelector('.add-payment-btn');
-        addButton.addEventListener('mouseenter', () => {
-            addButton.style.transform = 'scale(1.1)';
-        });
-        addButton.addEventListener('mouseleave', () => {
-            addButton.style.transform = 'scale(1)';
-        });
+        // Fonction pour ouvrir la modale de nouveau paiement
+        function openNewPaymentModal() {
+            // À implémenter
+            alert('Fonctionnalité à venir');
+        }
     </script>
 </body>
 </html> 
