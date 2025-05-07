@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dopaho - Gestion des Rendez-vous</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #17a2b8;
+            --accent-color: #004d99;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        #wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        #sidebar {
+            background-color: var(--primary-color);
+            color: white;
+            min-height: 100vh;
+            width: 250px;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        #sidebar .sidebar-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            padding: 20px;
+            background-color: #002244;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #sidebar ul li {
+            padding: 15px 25px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #sidebar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        #sidebar ul li:hover {
+            background-color: var(--secondary-color);
+            padding-left: 30px;
+        }
+
+        #page-content-wrapper {
+            flex-grow: 1;
+            padding: 30px;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-box input {
+            padding-right: 40px;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .rdv-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .rdv-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .rdv-urgent {
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .rdv-normal {
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .rdv-time {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .rdv-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-confirmed {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+        }
+
+        .status-pending {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning-color);
+        }
+
+        .status-cancelled {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger-color);
+        }
+
+        .calendar {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calendar-day:hover {
+            background-color: rgba(23, 162, 184, 0.1);
+        }
+
+        .calendar-day.today {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .calendar-day.has-rdv {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+        }
+
+        .filter-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-new-rdv {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .btn-new-rdv:hover {
+            background-color: #138496;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <i class="bi bi-hospital"></i>
+                Dopaho
+            </div>
+            <ul>
+                <li>
+                    <i class="bi bi-house"></i>
+                    <a href="index.html">Accueil</a>
+                </li>
+                <li>
+                    <i class="bi bi-calendar-check"></i>
+                    <a href="rdv.html">Rendez-vous</a>
+                </li>
+                <li>
+                    <i class="bi bi-people"></i>
+                    <a href="hoppat.html">Patients</a>
+                </li>
+                <li>
+                    <i class="bi bi-person-badge"></i>
+                    <a href="medecin.html">Médecins</a>
+                </li>
+                <li>
+                    <i class="bi bi-bell"></i>
+                    <a href="notif.html">Notifications</a>
+                </li>
+                <li>
+                    <i class="bi bi-gear"></i>
+                    <a href="parametre.html">Paramètres</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <i class="bi bi-calendar-check"></i>
+                    <span>Gestion des Rendez-vous</span>
+                </div>
+                <div class="search-box">
+                    <input class="form-control" type="search" placeholder="Rechercher un rendez-vous...">
+                    <i class="bi bi-search"></i>
+                </div>
+            </nav>
+
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <!-- Filtres -->
+                    <div class="filter-section">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="filter-group">
+                                <select class="form-select">
+                                    <option>Tous les médecins</option>
+                                    <option>Dr. Martin</option>
+                                    <option>Dr. Dupont</option>
+                                </select>
+                                <select class="form-select">
+                                    <option>Tous les statuts</option>
+                                    <option>Confirmé</option>
+                                    <option>En attente</option>
+                                    <option>Annulé</option>
+                                </select>
+                                <input type="date" class="form-control">
+                            </div>
+                            <button class="btn btn-new-rdv" data-bs-toggle="modal" data-bs-target="#newRdvModal">
+                                <i class="bi bi-plus-lg"></i> Nouveau RDV
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Liste des rendez-vous -->
+                    <div class="rdv-list">
+                        <div class="rdv-card rdv-urgent">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>Jean Dupont</h5>
+                                    <p class="mb-0">Consultation de suivi - Cardiologie</p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="rdv-time">09:00</span>
+                                    <div class="rdv-status status-confirmed">Confirmé</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rdv-card rdv-normal">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>Marie Martin</h5>
+                                    <p class="mb-0">Bilan annuel - Pédiatrie</p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="rdv-time">10:30</span>
+                                    <div class="rdv-status status-pending">En attente</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rdv-card rdv-normal">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>Pierre Durand</h5>
+                                    <p class="mb-0">Première consultation - Dermatologie</p>
+                                </div>
+                                <div class="text-end">
+                                    <span class="rdv-time">14:00</span>
+                                    <div class="rdv-status status-cancelled">Annulé</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- Calendrier -->
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <h5>Avril 2024</h5>
+                            <div>
+                                <button class="btn btn-sm btn-outline-secondary me-2">
+                                    <i class="bi bi-chevron-left"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day">Lun</div>
+                            <div class="calendar-day">Mar</div>
+                            <div class="calendar-day">Mer</div>
+                            <div class="calendar-day">Jeu</div>
+                            <div class="calendar-day">Ven</div>
+                            <div class="calendar-day">Sam</div>
+                            <div class="calendar-day">Dim</div>
+                            
+                            <div class="calendar-day">1</div>
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day">3</div>
+                            <div class="calendar-day">4</div>
+                            <div class="calendar-day">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div>
+                            <div class="calendar-day">9</div>
+                            <div class="calendar-day">10</div>
+                            <div class="calendar-day">11</div>
+                            <div class="calendar-day">12</div>
+                            <div class="calendar-day">13</div>
+                            <div class="calendar-day">14</div>
+                            <div class="calendar-day">15</div>
+                            <div class="calendar-day">16</div>
+                            <div class="calendar-day">17</div>
+                            <div class="calendar-day">18</div>
+                            <div class="calendar-day">19</div>
+                            <div class="calendar-day">20</div>
+                            <div class="calendar-day">21</div>
+                            <div class="calendar-day">22</div>
+                            <div class="calendar-day">23</div>
+                            <div class="calendar-day">24</div>
+                            <div class="calendar-day">25</div>
+                            <div class="calendar-day">26</div>
+                            <div class="calendar-day">27</div>
+                            <div class="calendar-day">28</div>
+                            <div class="calendar-day">29</div>
+                            <div class="calendar-day">30</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nouveau Rendez-vous -->
+    <div class="modal fade" id="newRdvModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nouveau Rendez-vous</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Patient</label>
+                            <select class="form-select">
+                                <option>Jean Dupont</option>
+                                <option>Marie Martin</option>
+                                <option>Pierre Durand</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Médecin</label>
+                            <select class="form-select">
+                                <option>Dr. Martin</option>
+                                <option>Dr. Dupont</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Heure</label>
+                            <input type="time" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Motif</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="urgence">
+                                <label class="form-check-label" for="urgence">
+                                    Rendez-vous urgent
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Programmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
