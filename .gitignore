@@ -1,6 +1,7 @@
 # Fichiers système
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Fichiers d'environnement
 .env
@@ -8,25 +9,56 @@ Thumbs.db
 .env.*.local
 
 # Dépendances
-/node_modules
-/vendor
+/vendor/
+/node_modules/
+/bower_components/
 
 # Fichiers de build
-/dist
-/build
+/dist/
+/build/
+/public/build/
 
-# Fichiers de logs
+# Fichiers de cache
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.cache/
+.php_cs.cache
+
+# Fichiers de configuration locaux
+config.local.php
+*.local.php
+
+# Fichiers de base de données
+*.sql
+*.sqlite
+*.db
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.swp
+*~
+
+# Fichiers de backup
+*.bak
+*.backup
+*_backup
 
 # Fichiers d'IDE
 .idea/
 .vscode/
-*.swp
-*.swo
+*.sublime-project
+*.sublime-workspace
 
-# Fichiers temporaires
-*.tmp
-*.temp 
+# Fichiers de logs
+logs/
+*.log
+
+# Fichiers de session
+sessions/
+*.session
+
+# Fichiers de cache PHP
+*.cache.php 
