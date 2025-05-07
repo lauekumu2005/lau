@@ -272,7 +272,7 @@ try {
                     <div class="stats-value"><?php echo $nombrePatients; ?></div>
                     <div class="stats-label">
                         <i class="fas fa-procedures"></i>
-                        Patients hospitalisés
+                        Patients hospitalisé
                     </div>
                     <div class="progress">
                         <div class="progress-bar bg-success" style="width: <?php echo $pourcentagePatients; ?>%"></div>
