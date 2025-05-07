@@ -90,9 +90,9 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .stat-card {
@@ -388,8 +388,7 @@
         <a href="index.php" class="active"><i class="fas fa-home"></i> Tableau de Bord</a>
         <a href="patients.php"><i class="fas fa-user-injured"></i> Mes Patients</a>
         <a href="recherche-patients.php"><i class="fas fa-search"></i> Recherche Patients</a>
-        <a href="dossiers.php"><i class="fas fa-folder"></i> Dossiers</a>
-    </div>
+           </div>
     <div class="main-content">
         <div class="dashboard-header">
             <h1>Tableau de Bord</h1>

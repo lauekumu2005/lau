@@ -281,7 +281,6 @@
         <a href="index.php"><i class="fas fa-home"></i> Tableau de Bord</a>
         <a href="patients.php"><i class="fas fa-user-injured"></i> Mes Patients</a>
         <a href="recherche-patients.php"><i class="fas fa-search"></i> Recherche Patients</a>
-        <a href="dossiers.php"><i class="fas fa-folder"></i> Dossiers</a>
         <a href="partage-dossiers.php" class="active"><i class="fas fa-share-alt"></i> Partage de Dossiers</a>
     </div>
 
