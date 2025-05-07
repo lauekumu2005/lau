@@ -141,7 +141,7 @@ try {
             transition: all 0.3s ease;
         }
         .sidebar a i {
-            margin-right: 10px;
+            margin-right: 11px;
             width: 20px;
             text-align: center;
         }
