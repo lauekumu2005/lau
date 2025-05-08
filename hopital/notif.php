@@ -295,6 +295,10 @@
         <a href="rdv.php"><i class="fas fa-calendar-check"></i> Rendez-vous</a>
         <a href="notif.php" class="active"><i class="fas fa-bell"></i> Notifications <span class="notification-badge">3</span></a>
         <a href="paiement.php"><i class="fas fa-money-bill-wave"></i> Paiements</a>
+        <a href="abonnement.php">
+            <i class="fas fa-crown"></i>
+            Abonnement
+        </a>
         <a href="parametre.php"><i class="fas fa-cog"></i> Paramètres</a>
 
         <div class="user-profile">
