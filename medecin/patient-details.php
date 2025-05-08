@@ -127,6 +127,19 @@
             margin: 5px 0;
         }
 
+        .history-hospital {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .history-hospital i {
+            color: #003366;
+        }
+
         .history-description {
             color: #444;
         }
@@ -331,7 +344,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
@@ -365,6 +377,10 @@
                         <div class="form-group">
                             <label for="historyDate">Date</label>
                             <input type="date" class="form-control" id="historyDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="historyHospital">Hôpital</label>
+                            <input type="text" class="form-control" id="historyHospital" placeholder="Nom de l'hôpital" required>
                         </div>
                         <div class="form-group">
                             <label for="historyTitle">Titre</label>
@@ -424,7 +440,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -500,6 +515,9 @@
                             <div class="history-content">
                                 <div class="history-date">15/03/2024</div>
                                 <div class="history-title">Consultation Générale</div>
+                                <div class="history-hospital">
+                                    <i class="fas fa-hospital"></i> Hôpital Central de Kinshasa
+                                </div>
                                 <div class="history-description">
                                     Patient présentant des symptômes de fatigue et douleurs articulaires.
                                     Tension artérielle légèrement élevée.
@@ -515,6 +533,9 @@
                             <div class="history-content">
                                 <div class="history-date">01/02/2024</div>
                                 <div class="history-title">Suivi Diabète</div>
+                                <div class="history-hospital">
+                                    <i class="fas fa-hospital"></i> Clinique Saint Luc
+                                </div>
                                 <div class="history-description">
                                     Glycémie stabilisée. Ajustement du traitement.
                                 </div>
@@ -574,9 +595,8 @@
                 </div>
             `;
         }
-
-        // Variables pour les modals
-        let historyModal;
+                // Variables pour les modals
+                let historyModal;
         let treatmentModal;
 
         // Fonction pour afficher le modal d'ajout d'antécédent
@@ -594,10 +614,11 @@
         // Fonction pour sauvegarder un antécédent
         function saveHistory() {
             const date = document.getElementById('historyDate').value;
+            const hospital = document.getElementById('historyHospital').value;
             const title = document.getElementById('historyTitle').value;
             const description = document.getElementById('historyDescription').value;
 
-            if (!date || !title || !description) {
+            if (!date || !hospital || !title || !description) {
                 alert('Veuillez remplir tous les champs obligatoires');
                 return;
             }
@@ -610,11 +631,16 @@
                 <div class="history-content">
                     <div class="history-date">${formatDate(date)}</div>
                     <div class="history-title">${title}</div>
+                    <div class="history-hospital">
+                        <i class="fas fa-hospital"></i> ${hospital}
+                    </div>
                     <div class="history-description">${description}</div>
                 </div>
-                <button class="btn-print" onclick="printHistory(this)">
-                    <i class="fas fa-print"></i> Imprimer
-                </button>
+                <div class="treatment-actions">
+                    <button class="btn-view" onclick="window.location.href='dossiers.php?id=1'">
+                        <i class="fas fa-eye"></i> Voir plus
+                    </button>
+                </div>
             `;
 
             // Ajouter au début de la liste
@@ -677,6 +703,7 @@
                         }
                         .history-date { color: #666; font-size: 0.9rem; }
                         .history-title { font-weight: 600; color: #003366; margin: 5px 0; }
+                        .history-hospital { color: #666; font-size: 0.9rem; margin: 5px 0; }
                         .history-description { color: #444; }
                     </style>
                 </head>
@@ -748,11 +775,11 @@
                 const historyContent = item.querySelector('.history-content').innerHTML;
                 content += `<div class="history-item-print">${historyContent}</div>`;
             });
-            
+
             printWindow.document.write(`
                 <html>
                 <head>
-                    <title>Antécédents Médicaux</title>
+                    <title>Historique Médical Complet</title>
                     <style>
                         body {
                             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -763,33 +790,14 @@
                             padding-bottom: 20px;
                             border-bottom: 1px solid #eee;
                         }
-                        .history-item-print:last-child {
-                            border-bottom: none;
-                        }
-                        .history-date { 
-                            color: #666; 
-                            font-size: 0.9rem; 
-                        }
-                        .history-title { 
-                            font-weight: 600; 
-                            color: #003366; 
-                            margin: 5px 0; 
-                        }
-                        .history-description { 
-                            color: #444; 
-                        }
-                        @media print {
-                            .history-item-print {
-                                page-break-inside: avoid;
-                            }
-                        }
+                        .history-date { color: #666; font-size: 0.9rem; }
+                        .history-title { font-weight: 600; color: #003366; margin: 5px 0; }
+                        .history-hospital { color: #666; font-size: 0.9rem; margin: 5px 0; }
+                        .history-description { color: #444; }
                     </style>
                 </head>
                 <body>
-                    <h2>Antécédents Médicaux</h2>
-                    <div class="patient-info">
-                        <p><strong>Patient:</strong> ${document.querySelector('.info-item span').textContent}</p>
-                    </div>
+                    <h2>Historique Médical Complet</h2>
                     ${content}
                 </body>
                 </html>
@@ -800,4 +808,4 @@
         }
     </script>
 </body>
-</html> 
+</html>

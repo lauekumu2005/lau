@@ -26,9 +26,9 @@
         }
 
         .navbar {
-            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background-color: var(--primary-color);
             padding: 1rem 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .navbar-brand {
@@ -36,10 +36,9 @@
             font-size: 1.5rem;
             font-weight: 600;
             text-decoration: none;
-        }
-
-        .navbar-brand i {
-            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .container {
@@ -49,57 +48,47 @@
         }
 
         .auth-section {
-            background: var(--white);
+            background-color: var(--white);
             border-radius: 12px;
             padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             max-width: 500px;
-            margin: 2rem auto;
+            margin: 0 auto;
         }
 
         .auth-title {
             color: var(--primary-color);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
             text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #444;
+        .form-label {
+            color: var(--primary-color);
             font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
         .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
         }
 
         .form-control:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
         }
 
         .btn-primary {
             background-color: var(--primary-color);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 0.75rem 1.5rem;
             font-weight: 500;
-            transition: all 0.3s ease;
             width: 100%;
         }
 
@@ -108,100 +97,41 @@
         }
 
         .search-section {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             display: none;
+            margin-top: 2rem;
+        }
+
+        .search-box {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .search-title {
             color: var(--primary-color);
-            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-box {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.1);
-        }
-
-        .btn-search {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-search:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .results-section {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            display: none;
-        }
-
-        .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .results-title {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 0;
         }
 
         .patient-card {
-            background: var(--white);
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
+            background-color: var(--white);
+            border-radius: 12px;
             padding: 1.5rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .patient-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .patient-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
         }
 
         .patient-name {
@@ -210,46 +140,45 @@
             color: var(--primary-color);
         }
 
-        .patient-hospital {
+        .patient-id {
             color: #666;
             font-size: 0.9rem;
         }
 
         .patient-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
         }
 
         .detail-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            margin-bottom: 0.5rem;
             color: #666;
         }
 
         .detail-item i {
-            color: var(--primary-color);
+            color: var(--accent-color);
             width: 20px;
         }
 
-        .patient-actions {
+        .action-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
         }
 
-        .btn-action {
+        .btn {
             padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 6px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.5rem;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .btn-view {
@@ -260,6 +189,7 @@
         .btn-view:hover {
             background-color: #0052a3;
             color: var(--white);
+            transform: translateY(-1px);
         }
 
         .btn-request {
@@ -270,6 +200,7 @@
         .btn-request:hover {
             background-color: #d45a00;
             color: var(--white);
+            transform: translateY(-1px);
         }
 
         .modal-content {
@@ -288,225 +219,62 @@
             font-weight: 600;
         }
 
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            background: var(--white);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transform: translateX(120%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
+        .dossier-access {
+            text-align: left;
         }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        .notification-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        .notification-success {
-            background-color: #e8f5e9;
-            color: var(--success-color);
-        }
-
-        .notification-error {
-            background-color: #ffebee;
-            color: var(--danger-color);
-        }
-
-        .notification-content {
-            flex: 1;
-        }
-
-        .notification-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .notification-message {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .user-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 1rem;
+        
+        .patient-info {
             background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .user-details {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-
-        .user-name {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .user-hospital {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .btn-logout {
-            background-color: var(--danger-color);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-logout:hover {
-            background-color: #c82333;
-        }
-
-        .dossier-details {
             padding: 1rem;
-        }
-
-        .dossier-section {
-            background: #f8f9fa;
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-
-        .dossier-section h4 {
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .dossier-section p {
-            margin-bottom: 0.5rem;
-            color: #444;
-            line-height: 1.6;
-        }
-
-        .dossier-section p strong {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-right: 0.5rem;
-        }
-
-        .dossier-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .dossier-card {
-            background: var(--white);
+        
+        .dossier-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #dee2e6;
             border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-
-        .dossier-card-title {
-            color: var(--primary-color);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .dossier-card-title i {
-            color: var(--accent-color);
-        }
-
-        .dossier-card-content {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .dossier-timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin-top: 1rem;
-        }
-
-        .dossier-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--primary-color);
-            opacity: 0.2;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 1.5rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.25rem;
-            width: 1rem;
-            height: 1rem;
-            border-radius: 50%;
-            background: var(--primary-color);
-            border: 2px solid var(--white);
-        }
-
-        .timeline-date {
-            color: var(--primary-color);
-            font-size: 0.9rem;
-            font-weight: 500;
+        
+        .dossier-content h6 {
+            color: #003366;
             margin-bottom: 0.5rem;
         }
 
-        .timeline-content {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        /* Styles pour les modales SweetAlert2 */
+        .swal2-popup {
+            border-radius: 12px !important;
+        }
+
+        .swal2-title {
+            color: #003366 !important;
+            font-weight: 600 !important;
+        }
+
+        .swal2-html-container {
+            margin: 1rem 0 !important;
+        }
+
+        .swal2-confirm {
+            padding: 0.75rem 2rem !important;
+            font-weight: 500 !important;
+        }
+
+        .swal2-cancel {
+            padding: 0.75rem 2rem !important;
+            font-weight: 500 !important;
+        }
+
+        #quickAccessForm .form-control {
+            border-radius: 8px;
+            padding: 0.75rem;
+        }
+
+        #quickAccessForm .form-control:focus {
+            border-color: #0066cc;
+            box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
         }
     </style>
 </head>
@@ -533,12 +301,12 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="hospital">Hôpital</label>
-                    <select class="form-control" id="hospital" required>
+                    <label for="hopital">Hôpital</label>
+                    <select class="form-control" id="hopital" required>
                         <option value="">Sélectionnez votre hôpital</option>
-                        <option value="1">Hôpital Saint-Joseph</option>
-                        <option value="2">Clinique Ngaliema</option>
-                        <option value="3">Centre Médical de Matete</option>
+                        <option value="hopital1">Hôpital Central</option>
+                        <option value="hopital2">Clinique Saint-Joseph</option>
+                        <option value="hopital3">Centre Médical du Nord</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -549,607 +317,413 @@
                     <label for="password">Mot de passe</label>
                     <input type="password" class="form-control" id="password" required>
                 </div>
-                <button type="button" class="btn-primary" onclick="authenticate()">
-                    <i class="fas fa-sign-in-alt"></i> Se connecter
-                </button>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
             </form>
         </div>
 
-        <!-- Section de recherche (visible après authentification) -->
-        <div class="search-section" id="searchSection">
-            <div class="user-info">
-                <div class="user-details">
-                    <div class="user-avatar" id="userAvatar">JD</div>
-                    <div>
-                        <div class="user-name" id="userName">Dr. Jean Dupont</div>
-                        <div class="user-hospital" id="userHospital">Hôpital Saint-Joseph</div>
-                    </div>
-                </div>
-                <button class="btn-logout" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i> Déconnexion
-                </button>
-            </div>
-            <h2 class="search-title">Recherche de Patient</h2>
+        <!-- Section de recherche -->
+        <div class="search-section" id="searchSection" style="display: none;">
             <div class="search-box">
-                <input type="text" class="search-input" id="searchInput" 
-                    placeholder="Entrez le nom du patient pour rechercher dans tous les hôpitaux...">
-                <button class="btn-search" onclick="searchPatients()">
-                    <i class="fas fa-search"></i> Rechercher
-                </button>
-            </div>
-        </div>
-
-        <!-- Section des résultats -->
-        <div class="results-section" id="resultsSection">
-            <div class="results-header">
-                <h3 class="results-title">Résultats de la Recherche</h3>
-                <span class="results-count">0 résultat(s) trouvé(s)</span>
-            </div>
-            <div id="searchResults">
-                <!-- Les résultats seront générés dynamiquement ici -->
+                <h3 class="search-title">Rechercher un patient</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Entrez le nom ou l'ID du patient">
+                </div>
+                <div id="searchResults"></div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Demande d'Accès -->
-    <div class="modal fade" id="accessRequestModal" tabindex="-1" aria-labelledby="accessRequestModalLabel" aria-hidden="true">
+    <!-- Modal de demande d'accès -->
+    <div class="modal fade" id="accessRequestModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="accessRequestModalLabel">Demande d'Accès au Dossier</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Demande d'accès au dossier</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="accessRequestForm">
                         <div class="form-group">
                             <label for="requestReason">Raison de la demande</label>
-                            <textarea class="form-control" id="requestReason" rows="3" required 
-                                placeholder="Expliquez la raison de votre demande d'accès..."></textarea>
+                            <textarea class="form-control" id="requestReason" rows="3" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Type d'accès requis</label>
-                            <div class="permission-list">
-                                <div class="permission-item">
-                                    <input type="checkbox" id="viewHistory" checked>
-                                    <label for="viewHistory">Voir l'historique médical</label>
-                                </div>
-                                <div class="permission-item">
-                                    <input type="checkbox" id="viewTreatments" checked>
-                                    <label for="viewTreatments">Voir les traitements</label>
-                                </div>
-                                <div class="permission-item">
-                                    <input type="checkbox" id="addNotes">
-                                    <label for="addNotes">Ajouter des notes</label>
-                                </div>
-                                <div class="permission-item">
-                                    <input type="checkbox" id="addTreatments">
-                                    <label for="addTreatments">Ajouter des traitements</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="accessDuration">Durée d'accès</label>
+                            <label for="accessDuration">Durée d'accès (jours)</label>
                             <select class="form-control" id="accessDuration" required>
                                 <option value="1">1 jour</option>
+                                <option value="3">3 jours</option>
                                 <option value="7">7 jours</option>
                                 <option value="30">30 jours</option>
-                                <option value="90">90 jours</option>
-                                <option value="permanent">Permanent</option>
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-modal btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn-modal btn-primary" onclick="submitAccessRequest()">Envoyer la demande</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" onclick="submitAccessRequest()">Soumettre la demande</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Notification -->
-    <div class="notification" id="notification">
-        <div class="notification-icon">
-            <i class="fas fa-check"></i>
-        </div>
-        <div class="notification-content">
-            <div class="notification-title">Succès</div>
-            <div class="notification-message">L'opération a été effectuée avec succès</div>
-        </div>
-    </div>
-
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // Données simulées des utilisateurs
-        const users = [
-            {
-                username: "lau5",
-                password: "lau2005",
-                name: "Dr. Lau Ekumu",
-                type: "medecin",
-                hospital: "Hôpital Saint-Joseph"
-            },
-            {
-                username: "mlambert",
-                password: "pass123",
-                name: "Dr. Marie Lambert",
-                type: "medecin",
-                hospital: "Clinique Ngaliema"
+    // Données de test
+    const patients = [
+        {
+            id: "P001",
+            name: "Jean Dupont",
+            age: 45,
+            sexe: "M",
+            poids: "75 kg",
+            groupeSanguin: "A+",
+            hopital: "Hôpital Central",
+            medecinSuivi: "Dr. Martin",
+            dossier: {
+                historique: "Hypertension artérielle, Diabète type 2",
+                traitements: "Métoprolol 50mg, Metformine 1000mg",
+                notes: "Suivi régulier, dernier contrôle le 15/03/2024"
             }
-        ];
-
-        // Données simulées des patients
-        const patients = [
-            {
-                id: "P001",
-                name: "Lauclass Ekumu",
-                age: 25,
-                gender: "M",
-                hospital: "Hôpital Saint-Joseph",
-                lastVisit: "2024-03-15",
-                status: "En traitement",
-                dossier: {
-                    historique: "Antécédents médicaux : Aucun",
-                    traitements: "Traitement en cours : Antibiotiques",
-                    notes: "Patient en bonne santé générale"
-                }
-            },
-            {
-                id: "P002",
-                name: "Jean Mukeba",
-                age: 45,
-                gender: "M",
-                hospital: "Clinique Ngaliema",
-                lastVisit: "2024-03-10",
-                status: "Suivi",
-                dossier: {
-                    historique: "Antécédents : Hypertension",
-                    traitements: "Médicaments pour la tension",
-                    notes: "Suivi régulier nécessaire"
-                }
-            },
-            {
-                id: "P003",
-                name: "Marie Mwamba",
-                age: 32,
-                gender: "F",
-                hospital: "Centre Médical de Matete",
-                lastVisit: "2024-03-12",
-                status: "Consultation",
-                dossier: {
-                    historique: "Antécédents : Diabète type 2",
-                    traitements: "Insuline",
-                    notes: "Contrôle glycémique régulier"
-                }
-            },
-            {
-                id: "P004",
-                name: "Pierre Tshibangu",
-                age: 28,
-                gender: "M",
-                hospital: "Hôpital Saint-Joseph",
-                lastVisit: "2024-03-14",
-                status: "En observation",
-                dossier: {
-                    historique: "Antécédents : Asthme",
-                    traitements: "Ventoline",
-                    notes: "Crise d'asthme récente"
-                }
-            }
-        ];
-
-        // Données simulées des demandes d'accès
-        const accessRequests = [];
-
-        let currentUser = null;
-        let currentPatientId = null;
-
-        // Authentification
-        function authenticate() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const userType = document.getElementById('userType').value;
-            const hospital = document.getElementById('hospital').value;
-
-            // Simuler la vérification des identifiants
-            const user = users.find(u => 
-                u.username === username && 
-                u.password === password && 
-                u.type === userType &&
-                u.hospital === document.getElementById('hospital').options[document.getElementById('hospital').selectedIndex].text
-            );
-
-            if (user) {
-                currentUser = user;
-                // Sauvegarder l'utilisateur dans le localStorage
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                showSearchSection();
-                updateUserInfo();
-                showNotification('Succès', 'Connexion réussie', 'success');
-            } else {
-                showNotification('Erreur', 'Identifiants incorrects', 'error');
+        },
+        {
+            id: "P002",
+            name: "Marie Martin",
+            age: 32,
+            sexe: "F",
+            poids: "58 kg",
+            groupeSanguin: "O-",
+            hopital: "Clinique Saint-Joseph",
+            medecinSuivi: "Dr. Dubois",
+            dossier: {
+                historique: "Asthme, Allergies saisonnières",
+                traitements: "Ventoline, Antihistaminiques",
+                notes: "Contrôle trimestriel, dernière consultation le 01/03/2024"
             }
         }
+    ];
 
-        // Afficher la section de recherche
-        function showSearchSection() {
+    let currentPatientId = null;
+
+    // Gestion de la connexion
+    document.getElementById('authForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const userType = document.getElementById('userType').value;
+        const hopital = document.getElementById('hopital').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Simuler la connexion
+        if (userType && hopital && username && password) {
             document.getElementById('authSection').style.display = 'none';
             document.getElementById('searchSection').style.display = 'block';
-            document.getElementById('resultsSection').style.display = 'block';
         }
+    });
 
-        // Mettre à jour les informations de l'utilisateur
-        function updateUserInfo() {
-            document.getElementById('userName').textContent = currentUser.name;
-            document.getElementById('userHospital').textContent = currentUser.hospital;
-            document.getElementById('userAvatar').textContent = currentUser.name.split(' ').map(n => n[0]).join('');
-        }
+    // Gestion de la recherche
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const results = patients.filter(patient => 
+            patient.name.toLowerCase().includes(searchTerm) || 
+            patient.id.toLowerCase().includes(searchTerm)
+        );
+        displaySearchResults(results);
+    });
 
-        // Déconnexion
-        function logout() {
-            currentUser = null;
-            // Supprimer l'utilisateur du localStorage
-            localStorage.removeItem('currentUser');
-            document.getElementById('authSection').style.display = 'block';
-            document.getElementById('searchSection').style.display = 'none';
-            document.getElementById('resultsSection').style.display = 'none';
-            document.getElementById('authForm').reset();
-            document.getElementById('searchInput').value = '';
-            document.getElementById('searchResults').innerHTML = '';
-        }
+    // Affichage des résultats de recherche
+    function displaySearchResults(results) {
+        const resultsDiv = document.getElementById('searchResults');
+        resultsDiv.innerHTML = '';
 
-        // Vérifier la session au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Récupérer l'utilisateur du localStorage
-            const savedUser = localStorage.getItem('currentUser');
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                showSearchSection();
-                updateUserInfo();
+        results.forEach(patient => {
+            const patientCard = document.createElement('div');
+            patientCard.className = 'patient-card';
+            patientCard.innerHTML = `
+                <div class="patient-info">
+                    <div class="patient-header">
+                        <div class="patient-name">${patient.name}</div>
+                        <div class="patient-id">ID: ${patient.id}</div>
+                    </div>
+                    <div class="patient-details">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <i class="fas fa-user"></i>
+                                    <span>${patient.age} ans - ${patient.sexe}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-weight"></i>
+                                    <span>${patient.poids}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-tint"></i>
+                                    <span>Groupe ${patient.groupeSanguin}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <i class="fas fa-hospital"></i>
+                                    <span>${patient.hopital}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-user-md"></i>
+                                    <span>${patient.medecinSuivi}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-view" onclick="viewDossier('${patient.id}')">
+                            <i class="fas fa-file-medical"></i> Voir le dossier complet
+                        </button>
+                        <button class="btn btn-request" onclick="requestAccess('${patient.id}')">
+                            <i class="fas fa-key"></i> Demander accès
+                        </button>
+                    </div>
+                </div>
+            `;
+            resultsDiv.appendChild(patientCard);
+        });
+    }    // Fonction pour voir le dossier
+    function viewDossier(patientId) {
+        currentPatientId = patientId;
+        const patient = patients.find(p => p.id === patientId);
+        
+        // Afficher d'abord la demande d'accès
+        Swal.fire({
+            title: 'Demande d\'accès au dossier',
+            html: `
+                <div class="text-center">
+                    <i class="fas fa-lock fa-3x text-primary mb-3"></i>
+                    <p>Pour accéder au dossier médical de ${patient.name}, vous devez demander l'accès.</p>
+                    <form id="quickAccessForm" class="text-start mt-4">
+                        <div class="mb-3">
+                            <label class="form-label">Raison de l'accès</label>
+                            <textarea class="form-control" id="quickRequestReason" rows="3" required 
+                                placeholder="Veuillez indiquer la raison de votre accès au dossier"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Durée d'accès</label>
+                            <select class="form-control" id="quickAccessDuration" required>
+                                <option value="1">1 jour</option>
+                                <option value="3">3 jours</option>
+                                <option value="7">7 jours</option>
+                                <option value="30">30 jours</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            `,
+            showCancelButton: true,
+            confirmButtonText: 'Demander l\'accès',
+            cancelButtonText: 'Annuler',
+            confirmButtonColor: '#003366',
+            width: '500px',
+            customClass: {
+                confirmButton: 'btn btn-primary px-4',
+                cancelButton: 'btn btn-secondary px-4'
+            },
+            buttonsStyling: true,
+            preConfirm: () => {
+                const reason = document.getElementById('quickRequestReason').value;
+                const duration = document.getElementById('quickAccessDuration').value;
+                
+                if (!reason) {
+                    Swal.showValidationMessage('Veuillez indiquer la raison de l\'accès');
+                    return false;
+                }
+                
+                return { reason, duration };
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Afficher le modal de consentement du patient
+                Swal.fire({
+                    title: 'Demande de Consentement',
+                    html: `
+                        <div class="text-center">
+                            <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
+                            <p>Avant d'accorder l'accès au dossier médical, nous devons obtenir le consentement du patient ou d'une personne de confiance.</p>
+                            <p class="text-muted">Le patient sera notifié de cette demande.</p>
+                        </div>
+                    `,
+                    showCancelButton: true,
+                    confirmButtonText: 'Demander le consentement',
+                    cancelButtonText: 'Annuler',
+                    confirmButtonColor: '#003366',
+                    width: '500px',
+                    customClass: {
+                        confirmButton: 'btn btn-primary px-4',
+                        cancelButton: 'btn btn-secondary px-4'
+                    }
+                }).then((consentResult) => {
+                    if (consentResult.isConfirmed) {
+                        // Simuler l'envoi de la notification au patient
+                        Swal.fire({
+                            title: 'Notification envoyée',
+                            html: `
+                                <div class="text-center">
+                                    <i class="fas fa-bell fa-3x text-warning mb-3"></i>
+                                    <p>Une notification a été envoyée au patient pour obtenir son consentement.</p>
+                                    <p class="text-muted">Vous serez notifié une fois le consentement accordé.</p>
+                                </div>
+                            `,
+                            confirmButtonText: 'OK',
+                            width: '500px',
+                            customClass: {
+                                confirmButton: 'btn btn-primary px-4'
+                            }
+                        });
+
+                        // Simuler l'accord du patient après un délai
+                        setTimeout(() => {
+                            showPatientConsent(patientId, result.value.reason, result.value.duration);
+                        }, 3000);
+                    }
+                });
             }
         });
-
-        // Rechercher des patients
-        function searchPatients() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            if (!searchTerm) {
-                showNotification('Info', 'Veuillez entrer un nom de patient', 'error');
-                return;
+    }
+        // Fonction pour simuler l'accord du patient
+        function showPatientConsent(patientId, reason, duration) {
+        Swal.fire({
+            title: 'Consentement Accordé',
+            html: `
+                <div class="text-center">
+                    <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                    <p>Le patient a accordé son consentement pour l'accès à son dossier médical.</p>
+                    <div class="mt-3">
+                        <p><strong>Raison de l'accès:</strong> ${reason}</p>
+                        <p><strong>Durée d'accès:</strong> ${duration} jours</p>
+                    </div>
+                </div>
+            `,
+            confirmButtonText: 'Accéder au dossier',
+            confirmButtonColor: '#28a745',
+            width: '500px',
+            customClass: {
+                confirmButton: 'btn btn-success px-4'
             }
-
-            // Simuler un délai de recherche
-            showNotification('Info', 'Recherche en cours...', 'success');
-            
-            setTimeout(() => {
-                const filteredPatients = patients.filter(patient => 
-                    patient.name.toLowerCase().includes(searchTerm)
-                );
-
-                if (filteredPatients.length === 0) {
-                    showNotification('Info', 'Aucun patient trouvé', 'error');
-                } else {
-                    showNotification('Succès', `${filteredPatients.length} patient(s) trouvé(s)`, 'success');
-                }
-
-                displaySearchResults(filteredPatients);
-            }, 1000);
-        }
-
-        // Afficher les résultats de recherche
-        function displaySearchResults(patients) {
-            const resultsContainer = document.getElementById('searchResults');
-            resultsContainer.innerHTML = '';
-
-            if (patients.length === 0) {
-                resultsContainer.innerHTML = `
-                    <div class="alert alert-info">
-                        Aucun patient trouvé pour votre recherche.
-                    </div>
-                `;
-                return;
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Afficher le dossier
+                showDossierAccess(patientId);
             }
+        });
+    }
 
-            patients.forEach(patient => {
-                const card = createPatientCard(patient);
-                resultsContainer.appendChild(card);
-            });
-
-            // Mettre à jour le compteur de résultats
-            document.querySelector('.results-count').textContent = `${patients.length} résultat(s) trouvé(s)`;
-        }
-
-        // Créer une carte de patient
-        function createPatientCard(patient) {
-            const card = document.createElement('div');
-            card.className = 'patient-card';
-            
-            card.innerHTML = `
-                <div class="patient-header">
-                    <div>
-                        <div class="patient-name">${patient.name}</div>
-                        <div class="patient-hospital">${patient.hospital}</div>
+    // Fonction pour simuler l'accès au dossier
+    function showDossierAccess(patientId) {
+        const patient = patients.find(p => p.id === patientId);
+        
+        Swal.fire({
+            title: 'Accès au Dossier Médical',
+            html: `
+                <div class="dossier-access">
+                    <div class="patient-info mb-4">
+                        <h5>${patient.name}</h5>
+                        <p class="text-muted">ID: ${patient.id}</p>
                     </div>
-                    <div class="patient-status">${patient.status}</div>
-                </div>
-                <div class="patient-details">
-                    <div class="detail-item">
-                        <i class="fas fa-id-card"></i>
-                        <span>ID: ${patient.id}</span>
+                    <div class="dossier-content">
+                        <div class="mb-3">
+                            <h6>Historique Médical</h6>
+                            <p>${patient.dossier.historique}</p>
+                        </div>
+                        <div class="mb-3">
+                            <h6>Traitements en cours</h6>
+                            <p>${patient.dossier.traitements}</p>
+                        </div>
+                        <div class="mb-3">
+                            <h6>Notes</h6>
+                            <p>${patient.dossier.notes}</p>
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <i class="fas fa-user"></i>
-                        <span>${patient.age} ans - ${patient.gender}</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>Dernière visite: ${formatDate(patient.lastVisit)}</span>
+                    <div class="mt-4">
+                        <button class="btn btn-primary w-100" onclick="showAddToSystemForm('${patientId}')">
+                            <i class="fas fa-plus-circle me-2"></i>Ajouter au système interne
+                        </button>
                     </div>
                 </div>
-                <div class="patient-actions">
-                    <button class="btn-action btn-view" onclick="viewPatientDetails('${patient.id}')">
-                        <i class="fas fa-eye"></i> Voir le dossier
-                    </button>
-                    <button class="btn-action btn-request" onclick="requestAccess('${patient.id}')">
-                        <i class="fas fa-key"></i> Demander l'accès
-                    </button>
-                </div>
-            `;
-            
-            return card;
-        }
+            `,
+            width: '600px',
+            showCloseButton: true,
+            showConfirmButton: false
+        });
+    }
 
-        // Voir les détails du patient
-        function viewPatientDetails(patientId) {
-            const patient = patients.find(p => p.id === patientId);
-            if (!patient) return;
-
-            // Vérifier si l'utilisateur a l'accès
-            if (!hasAccess(patientId)) {
-                showNotification('Accès refusé', 'Vous devez demander l\'accès pour voir le dossier complet', 'error');
-                requestAccess(patientId);
-                return;
-            }
-
-            // Afficher les détails du dossier
-            const modal = new bootstrap.Modal(document.getElementById('accessRequestModal'));
-            document.getElementById('accessRequestModalLabel').textContent = `Dossier de ${patient.name}`;
-            
-            const modalBody = document.querySelector('#accessRequestModal .modal-body');
-            modalBody.innerHTML = `
-                <div class="dossier-details">
-                    <div class="dossier-section">
-                        <h4>Informations générales</h4>
-                        <div class="dossier-grid">
-                            <div class="dossier-card">
-                                <div class="dossier-card-title">
-                                    <i class="fas fa-user"></i>
-                                    Informations personnelles
-                                </div>
-                                <div class="dossier-card-content">
-                                    <p><strong>Nom:</strong> ${patient.name}</p>
-                                    <p><strong>Âge:</strong> ${patient.age} ans</p>
-                                    <p><strong>Genre:</strong> ${patient.gender}</p>
-                                    <p><strong>Hôpital:</strong> ${patient.hospital}</p>
-                                </div>
-                            </div>
-                            <div class="dossier-card">
-                                <div class="dossier-card-title">
-                                    <i class="fas fa-calendar-check"></i>
-                                    Dernière visite
-                                </div>
-                                <div class="dossier-card-content">
-                                    <p><strong>Date:</strong> ${formatDate(patient.lastVisit)}</p>
-                                    <p><strong>Statut:</strong> ${patient.status}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dossier-section">
-                        <h4>Historique médical</h4>
-                        <div class="dossier-timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-date">${formatDate(patient.lastVisit)}</div>
-                                <div class="timeline-content">
-                                    ${patient.dossier.historique}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dossier-section">
-                        <h4>Traitements en cours</h4>
-                        <div class="dossier-card">
-                            <div class="dossier-card-title">
-                                <i class="fas fa-pills"></i>
-                                Médicaments prescrits
-                            </div>
-                            <div class="dossier-card-content">
-                                ${patient.dossier.traitements}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dossier-section">
-                        <h4>Notes médicales</h4>
-                        <div class="dossier-card">
-                            <div class="dossier-card-title">
-                                <i class="fas fa-notes-medical"></i>
-                                Observations
-                            </div>
-                            <div class="dossier-card-content">
-                                ${patient.dossier.notes}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            const modalFooter = document.querySelector('#accessRequestModal .modal-footer');
-            modalFooter.innerHTML = `
-                <button type="button" class="btn-modal btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            `;
-
-            modal.show();
-        }
-
-        // Vérifier si l'utilisateur a l'accès au dossier
-        function hasAccess(patientId) {
-            const request = accessRequests.find(r => 
-                r.patientId === patientId && 
-                r.doctor === currentUser.name &&
-                r.status === 'approved'
-            );
-            return !!request;
-        }
-
-        // Demander l'accès
-        function requestAccess(patientId) {
-            currentPatientId = patientId;
-            const modal = new bootstrap.Modal(document.getElementById('accessRequestModal'));
-            
-            // Réinitialiser le formulaire
-            document.getElementById('accessRequestForm').reset();
-            document.getElementById('accessRequestModalLabel').textContent = 'Demande d\'Accès au Dossier';
-            
-            // Restaurer le contenu original du modal
-            const modalBody = document.querySelector('#accessRequestModal .modal-body');
-            modalBody.innerHTML = `
-                <form id="accessRequestForm">
-                    <div class="form-group">
-                        <label for="requestReason">Raison de la demande</label>
-                        <textarea class="form-control" id="requestReason" rows="3" required 
-                            placeholder="Expliquez la raison de votre demande d'accès..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Type d'accès requis</label>
-                        <div class="permission-list">
-                            <div class="permission-item">
-                                <input type="checkbox" id="viewHistory" checked>
-                                <label for="viewHistory">Voir l'historique médical</label>
-                            </div>
-                            <div class="permission-item">
-                                <input type="checkbox" id="viewTreatments" checked>
-                                <label for="viewTreatments">Voir les traitements</label>
-                            </div>
-                            <div class="permission-item">
-                                <input type="checkbox" id="addNotes">
-                                <label for="addNotes">Ajouter des notes</label>
-                            </div>
-                            <div class="permission-item">
-                                <input type="checkbox" id="addTreatments">
-                                <label for="addTreatments">Ajouter des traitements</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="accessDuration">Durée d'accès</label>
-                        <select class="form-control" id="accessDuration" required>
-                            <option value="1">1 jour</option>
-                            <option value="7">7 jours</option>
-                            <option value="30">30 jours</option>
-                            <option value="90">90 jours</option>
-                            <option value="permanent">Permanent</option>
+    // Fonction pour afficher le formulaire d'ajout au système interne
+    function showAddToSystemForm(patientId) {
+        Swal.fire({
+            title: 'Ajouter au Système Interne',
+            html: `
+                <form id="addToSystemForm" class="text-start">
+                    <div class="mb-3">
+                        <label class="form-label">Service</label>
+                        <select class="form-control" id="service">
+                            <option value="">Sélectionner un service</option>
+                            <option value="urgence">Urgences</option>
+                            <option value="pediatrie">Pédiatrie</option>
+                            <option value="chirurgie">Chirurgie</option>
+                            <option value="cardiologie">Cardiologie</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Médecin responsable</label>
+                        <input type="text" class="form-control" id="medecin" placeholder="Nom du médecin">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes additionnelles</label>
+                        <textarea class="form-control" id="notes" rows="3" placeholder="Ajouter des notes..."></textarea>
+                    </div>
                 </form>
-            `;
-
-            const modalFooter = document.querySelector('#accessRequestModal .modal-footer');
-            modalFooter.innerHTML = `
-                <button type="button" class="btn-modal btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn-modal btn-primary" onclick="submitAccessRequest()">Envoyer la demande</button>
-            `;
-
-            modal.show();
-        }
-
-        // Soumettre la demande d'accès
-        function submitAccessRequest() {
-            const reason = document.getElementById('requestReason').value;
-            const duration = document.getElementById('accessDuration').value;
-            
-            if (!reason) {
-                showNotification('Erreur', 'Veuillez remplir tous les champs obligatoires', 'error');
-                return;
+            `,
+            showCancelButton: true,
+            confirmButtonText: 'Enregistrer',
+            cancelButtonText: 'Annuler',
+            confirmButtonColor: '#003366',
+            width: '500px',
+            customClass: {
+                confirmButton: 'btn btn-primary px-4',
+                cancelButton: 'btn btn-secondary px-4'
+            },
+            preConfirm: () => {
+                const service = document.getElementById('service').value;
+                const medecin = document.getElementById('medecin').value;
+                const notes = document.getElementById('notes').value;
+                
+                if (!service || !medecin) {
+                    Swal.showValidationMessage('Veuillez remplir tous les champs obligatoires');
+                    return false;
+                }
+                
+                return { service, medecin, notes };
             }
-
-            // Simuler l'envoi de la demande
-            const request = {
-                patientId: currentPatientId,
-                doctor: currentUser.name,
-                hospital: currentUser.hospital,
-                reason: reason,
-                duration: duration,
-                permissions: {
-                    viewHistory: document.getElementById('viewHistory').checked,
-                    viewTreatments: document.getElementById('viewTreatments').checked,
-                    addNotes: document.getElementById('addNotes').checked,
-                    addTreatments: document.getElementById('addTreatments').checked
-                },
-                status: 'pending',
-                date: new Date().toISOString()
-            };
-
-            accessRequests.push(request);
-
-            // Fermer le modal
-            bootstrap.Modal.getInstance(document.getElementById('accessRequestModal')).hide();
-
-            // Afficher une notification de succès
-            showNotification('Succès', 'Votre demande d\'accès a été envoyée', 'success');
-
-            // Simuler une réponse automatique après 2 secondes
-            setTimeout(() => {
-                // Simuler l'approbation automatique pour la démonstration
-                request.status = 'approved';
-                showNotification('Accès accordé', 'Votre demande d\'accès a été approuvée', 'success');
-            }, 2000);
-        }
-
-        // Afficher une notification
-        function showNotification(title, message, type) {
-            const notification = document.getElementById('notification');
-            const icon = notification.querySelector('.notification-icon i');
-            const notificationTitle = notification.querySelector('.notification-title');
-            const notificationMessage = notification.querySelector('.notification-message');
-
-            // Mettre à jour le contenu
-            notificationTitle.textContent = title;
-            notificationMessage.textContent = message;
-
-            // Mettre à jour le style
-            notification.className = 'notification';
-            if (type === 'success') {
-                notification.classList.add('notification-success');
-                icon.className = 'fas fa-check';
-            } else {
-                notification.classList.add('notification-error');
-                icon.className = 'fas fa-times';
-            }
-
-            // Afficher la notification
-            notification.classList.add('show');
-
-            // Cacher la notification après 3 secondes
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Formater la date
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('fr-FR');
-        }
-
-        // Gérer la recherche avec la touche Entrée
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchPatients();
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Simuler l'enregistrement dans le système
+                Swal.fire({
+                    title: 'Enregistrement réussi',
+                    html: `
+                        <div class="text-center">
+                            <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                            <p>Le dossier a été ajouté avec succès au système interne.</p>
+                            <div class="mt-3">
+                                <p><strong>Service:</strong> ${result.value.service}</p>
+                                <p><strong>Médecin:</strong> ${result.value.medecin}</p>
+                            </div>
+                        </div>
+                    `,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#28a745',
+                    width: '500px',
+                    customClass: {
+                        confirmButton: 'btn btn-success px-4'
+                    }
+                });
             }
         });
-    </script>
+    }
+</script>
 </body>
-</html> 
+</html>
