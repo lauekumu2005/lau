@@ -899,7 +899,7 @@
                 confirmButtonColor: '#28a745'
             }).then(() => {
                 // Traiter le paiement et rediriger
-                processPayment('orange', amount, devise, patient, motif);
+                window.location.href = 'paiement.php';
             });
         }
 

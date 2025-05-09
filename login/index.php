@@ -267,16 +267,16 @@
                 // Redirection selon le rôle
                 switch(role) {
                     case 'admin':
-                        window.location.href = 'hoppat.php';
+                        window.location.href = '../hopital/index.php';
                         break;
                     case 'medecin':
                         window.location.href = '../medecin/index.php';  // Redirection vers le dossier medecin
                         break;
                     case 'receptionniste':
-                        window.location.href = 'index.php';
+                        window.location.href = '../hopital/index.php';
                         break;
                     case 'caissier':
-                        window.location.href = 'paiement.php';
+                        window.location.href = '../hopital/paiement.php';
                         break;
                     default:
                         showError("Rôle non valide");
