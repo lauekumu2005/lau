@@ -3,224 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Paiements - Administration Hospitalière</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Paiements - DOPAHO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #003366;
-            --secondary-color: #002244;
-            --accent-color: #003366;
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --danger-color: #dc3545;
-            --light-bg: #f4f6f9;
-            --dark-text: #003366;
-            --light-text: #666666;
-            --orange-color: #ff6b00;
-        }
-
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-        }
-
-        .sidebar { 
-            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white; 
-            padding: 20px; 
-            height: 100vh; 
-            position: fixed; 
-            width: 280px;
-            box-shadow: 2px 0 15px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .sidebar-header {
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .sidebar-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .sidebar-header img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            border: 3px solid rgba(255,255,255,0.2);
-        }
-
-        .sidebar a { 
-            color: rgba(255,255,255,0.8); 
-            text-decoration: none; 
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .sidebar a i {
-            margin-right: 12px;
-            width: 20px;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-
-        .sidebar a:hover { 
-            background-color: rgba(255,255,255,0.1);
-            color: white;
-            transform: translateX(5px);
-        }
-
-        .sidebar a.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .main-content { 
-            margin-left: 280px; 
-            padding: 30px;
-        }
-
-        .welcome-section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .invoice-form {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .invoice-items {
-            margin: 20px 0;
-        }
-
-        .invoice-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-        }
-
-        .invoice-item:hover {
-            background: #f8f9fa;
-        }
-
-        .remove-item {
-            color: var(--danger-color);
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .payment-methods-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-
-        .payment-methods-content {
-            position: relative;
-            background: white;
-            width: 90%;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 15px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close-modal {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--light-text);
-        }
-
-        .close-modal:hover {
-            color: var(--danger-color);
-        }
-
-        .payment-method-card {
+        .orange-money-form {
             background: #fff;
-            border: 1px solid rgba(0,0,0,0.1);
             border-radius: 10px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
+            padding: 1.5rem;
         }
 
-        .payment-method-card:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .orange-money-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #ff6b00;
         }
 
-        .payment-summary {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .form-label {
-            color: var(--dark-text);
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .form-control {
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 12px;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(0, 51, 102, 0.25);
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
-
-        /* Styles Orange Money */
         .orange-money-logo {
             width: 60px;
             height: 60px;
-            background: var(--orange-color);
+            background: #ff6b00;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -245,7 +48,7 @@
         .receipt-logo {
             width: 80px;
             height: 80px;
-            background: var(--orange-color);
+            background: #ff6b00;
             color: white;
             border-radius: 50%;
             display: flex;
@@ -274,7 +77,7 @@
         }
 
         .receipt-row strong {
-            color: var(--primary-color);
+            color: #003366;
         }
 
         .receipt-footer {
@@ -282,27 +85,97 @@
             color: #666;
             font-size: 0.9rem;
         }
+
+        .spinner-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #ff6b00;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Styles pour l'impression */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableInvoice, #printableInvoice * {
+                visibility: visible;
+            }
+            #printableInvoice {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .invoice-header {
+                text-align: center;
+                margin-bottom: 30px;
+                border-bottom: 2px solid #000;
+                padding-bottom: 20px;
+            }
+            .invoice-details {
+                margin-bottom: 30px;
+            }
+            .invoice-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 30px;
+            }
+            .invoice-table th, .invoice-table td {
+                border: 1px solid #000;
+                padding: 10px;
+            }
+            .invoice-footer {
+                margin-top: 50px;
+                text-align: center;
+                border-top: 1px solid #000;
+                padding-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
-            <img src="assets/img/hospital-logo.png" alt="Logo Hôpital">
-            <h3>Administration</h3>
+            <img src="assets/images/hospital-logo.png" alt="Logo Hôpital">
+            <h3>Hôpital Central</h3>
         </div>
         <nav>
             <a href="index.php">
                 <i class="fas fa-home"></i>
                 Tableau de bord
             </a>
-            <a href="medecin.php">
-                <i class="fas fa-user-md"></i>
-                Médecins
-            </a>
             <a href="hoppat.php">
                 <i class="fas fa-users"></i>
                 Patients
+            </a>
+            <a href="medecin.php">
+                <i class="fas fa-user-md"></i>
+                Médecins
             </a>
             <a href="rdv.php">
                 <i class="fas fa-calendar-check"></i>
@@ -313,7 +186,7 @@
                 Notifications
             </a>
             <a href="paiement.php" class="active">
-                <i class="fas fa-credit-card"></i>
+                <i class="fas fa-money-bill-wave"></i>
                 Paiements
             </a>
             <a href="abonnement.php">
@@ -325,172 +198,273 @@
                 Paramètres
             </a>
         </nav>
+        <div class="user-profile">
+            <img src="assets/images/admin-avatar.png" alt="Admin">
+            <div class="user-info">
+                <h6>Admin</h6>
+                <small>Administrateur</small>
+            </div>
+        </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <div class="welcome-section">
-            <h1>Gestion des Paiements</h1>
-            <p>Créez une facture et gérez les paiements des patients</p>
+            <h2>Gestion des Paiements</h2>
+            <p>Gérez les paiements et les transactions de votre établissement</p>
+            <div class="quick-actions">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPaymentModal">
+                    <i class="fas fa-plus"></i>
+                    Nouveau Paiement
+                </button>
+                <button class="btn btn-outline-primary" onclick="exportPayments()">
+                    <i class="fas fa-download"></i>
+                    Exporter
+                </button>
+                <button class="btn btn-outline-primary" onclick="refreshPayments()">
+                    <i class="fas fa-sync-alt"></i>
+                    Actualiser
+                </button>
+            </div>
         </div>
 
-        <!-- Formulaire de facturation -->
-        <div class="invoice-form">
-            <h3 class="mb-4">Nouvelle Facture</h3>
-            <form id="invoiceForm">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Patient</label>
-                        <select class="form-control" required>
-                            <option value="">Sélectionner un patient</option>
-                            <option value="1">Jean Dupont</option>
-                            <option value="2">Marie Martin</option>
-                            <option value="3">Pierre Durand</option>
+        <!-- Statistics Section -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stats-value">15,000 €</div>
+                        <div class="stats-label">
+                            <i class="fas fa-money-bill-wave text-primary"></i>
+                            Revenus du mois
+                        </div>
+                        <div class="progress-info">
+                            <small>+2,500 € ce mois</small>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stats-value">250</div>
+                        <div class="stats-label">
+                            <i class="fas fa-receipt text-success"></i>
+                            Transactions
+                        </div>
+                        <div class="progress-info">
+                            <small>+25 aujourd'hui</small>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stats-value">12</div>
+                        <div class="stats-label">
+                            <i class="fas fa-clock text-warning"></i>
+                            En attente
+                        </div>
+                        <div class="progress-info">
+                            <small>-3 aujourd'hui</small>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stats-value">98%</div>
+                        <div class="stats-label">
+                            <i class="fas fa-check-circle text-info"></i>
+                            Taux de succès
+                        </div>
+                        <div class="progress-info">
+                            <small>+1% ce mois</small>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" style="width: 98%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payments List -->
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="card-title mb-0">Liste des Paiements</h5>
+                    <div class="d-flex gap-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Rechercher...">
+                            <button class="btn btn-outline-secondary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <select class="form-select" id="paymentFilter">
+                            <option value="">Tous les statuts</option>
+                            <option value="completed">Complété</option>
+                            <option value="pending">En attente</option>
+                            <option value="failed">Échoué</option>
                         </select>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Date de facturation</label>
-                        <input type="date" class="form-control" required>
-                    </div>
                 </div>
-
-                <div class="invoice-items">
-                    <h4 class="mb-3">Articles</h4>
-                    <div id="itemsList">
-                        <!-- Les articles seront ajoutés ici dynamiquement -->
-                    </div>
-                    <button type="button" class="btn btn-outline-primary" onclick="addInvoiceItem()">
-                        <i class="fas fa-plus me-2"></i>Ajouter un article
-                    </button>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="payment-summary">
-                            <h4>Résumé</h4>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>Sous-total</span>
-                                <span id="subtotal">$0.00</span>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span>TVA (20%)</span>
-                                <span id="tax">$0.00</span>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <strong>Total</strong>
-                                <strong class="text-primary" id="total">$0.00</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="showPaymentMethods()">
-                        <i class="fas fa-credit-card me-2"></i>Procéder au paiement
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <!-- Modal des méthodes de paiement -->
-        <div class="payment-methods-modal" id="paymentMethodsModal">
-            <div class="payment-methods-content">
-                <span class="close-modal" onclick="closePaymentMethods()">&times;</span>
-                <h3 class="mb-4">Choisir le mode de paiement</h3>
-                
-                <!-- Carte Bancaire -->
-                <div class="payment-method-card mb-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-credit-card fa-2x text-primary me-3"></i>
-                        <h4 class="mb-0">Carte Bancaire</h4>
-                    </div>
-                    <form id="cardPaymentForm">
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label">Numéro de carte</label>
-                                <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Date d'expiration</label>
-                                <input type="text" class="form-control" placeholder="MM/AA">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">CVV</label>
-                                <input type="text" class="form-control" placeholder="123">
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label">Nom sur la carte</label>
-                                <input type="text" class="form-control" placeholder="JEAN DUPONT">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Mobile Money -->
-                <div class="payment-method-card mb-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-mobile-alt fa-2x text-primary me-3"></i>
-                        <h4 class="mb-0">Mobile Money</h4>
-                    </div>
-                    <form id="mobileMoneyForm">
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label">Numéro de téléphone</label>
-                                <input type="tel" class="form-control" placeholder="+225 07 12 34 56 78">
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label">Opérateur</label>
-                                <select class="form-control">
-                                    <option value="">Sélectionner un opérateur</option>
-                                    <option value="mtn">MTN</option>
-                                    <option value="airtel">Airtel</option>
-                                    <option value="moov">Moov</option>
-                                </select>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Orange Money -->
-                <div class="payment-method-card">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-wallet fa-2x text-primary me-3"></i>
-                        <h4 class="mb-0">Orange Money</h4>
-                    </div>
-                    <form id="orangeMoneyForm">
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label">Numéro Orange Money</label>
-                                <input type="tel" class="form-control" id="orangeNumber" placeholder="+225 07 12 34 56 78">
-                                <small class="text-muted">Entrez votre numéro Orange Money enregistré</small>
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label">Montant</label>
-                                <input type="text" class="form-control" id="orangeAmount" readonly>
-                                <small class="text-muted">Montant à débiter de votre compte Orange Money</small>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-warning w-100" onclick="requestOrangePayment()">
-                            Continuer
-                        </button>
-                    </form>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient</th>
+                                <th>Montant</th>
+                                <th>Date</th>
+                                <th>Méthode</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsList">
+                            <!-- Les paiements seront chargés dynamiquement ici -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal du code secret Orange Money -->
-    <div class="modal fade" id="orangePasswordModal" tabindex="-1" data-bs-backdrop="static">
+    <!-- New Payment Modal -->
+    <div class="modal fade" id="newPaymentModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nouveau Paiement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Patient</label>
+                                <select class="form-select" name="patient_id" required>
+                                    <option value="">Sélectionner un patient</option>
+                                    <option value="1">Jean Dupont</option>
+                                    <option value="2">Marie Martin</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Montant</label>
+                                <input type="number" class="form-control" name="amount" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label class="form-label">Devise</label>
+                                <select class="form-select" name="devise" required onchange="updateAmountPlaceholder()">
+                                    <option value="CDF">CDF</option>
+                                    <option value="USD">USD</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Motif</label>
+                                <select class="form-select" name="motif" required>
+                                    <option value="">Sélectionner</option>
+                                    <option value="echographie">Échographie</option>
+                                    <option value="consultation">Consultation</option>
+                                    <option value="analyse">Analyse médicale</option>
+                                    <option value="operation">Opération</option>
+                                    <option value="medicament">Médicaments</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Méthode de paiement</label>
+                                <select class="form-select" name="payment_method" id="paymentMethod" required onchange="showPaymentDetails()">
+                                    <option value="">Sélectionner</option>
+                                    <option value="card">Carte bancaire</option>
+                                    <option value="cash">Espèces</option>
+                                    <option value="orange">Orange Money</option>
+                                    <option value="transfer">Virement bancaire</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="cardDetails" class="payment-details" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Numéro de carte</label>
+                                    <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nom sur la carte</label>
+                                    <input type="text" class="form-control" placeholder="JOHN DOE">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Date d'expiration</label>
+                                    <input type="text" class="form-control" placeholder="MM/AA">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">CVV</label>
+                                    <input type="text" class="form-control" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="orangeDetails" class="payment-details" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Numéro Orange Money</label>
+                                    <input type="tel" class="form-control" placeholder="+225 07 07 07 07 07">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="transferDetails" class="payment-details" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">IBAN</label>
+                                    <input type="text" class="form-control" placeholder="FR76 XXXX XXXX XXXX XXXX XXXX XXX">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">BIC/SWIFT</label>
+                                    <input type="text" class="form-control" placeholder="BNPAFRPP">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Référence du virement</label>
+                                    <input type="text" class="form-control" placeholder="REF-XXXX-XXXX">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" name="notes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" onclick="savePayment()">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation Orange Money -->
+    <div class="modal fade" id="orangeConfirmModal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <div class="modal-header bg-warning text-white">
+                <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title">
                         <i class="fas fa-lock me-2"></i>
                         Code secret
@@ -520,136 +494,302 @@
             </div>
         </div>
     </div>
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Modal de reçu Orange Money -->
+    <div class="modal fade" id="orangeReceiptModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="orange-money-receipt">
+                        <div class="receipt-header">
+                            <div class="receipt-logo">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Orange Money</h4>
+                            <p class="text-success mb-0">Transaction réussie</p>
+                        </div>
+                        <div class="receipt-details">
+                            <div class="receipt-row">
+                                <span>Date</span>
+                                <strong><span id="receiptDate"></span></strong>
+                            </div>
+                            <div class="receipt-row">
+                                <span>Numéro de transaction</span>
+                                <strong><span id="receiptTransactionId"></span></strong>
+                            </div>
+                            <div class="receipt-row">
+                                <span>Montant</span>
+                                <strong><span id="receiptAmount"></span> FCFA</strong>
+                            </div>
+                            <div class="receipt-row">
+                                <span>Numéro Orange Money</span>
+                                <strong><span id="receiptPhone"></span></strong>
+                            </div>
+                            <div class="receipt-row">
+                                <span>Statut</span>
+                                <strong class="text-success">Payé</strong>
+                            </div>
+                        </div>
+                        <div class="receipt-footer">
+                            <p>Merci d'avoir utilisé Orange Money</p>
+                            <p>Un reçu a été envoyé sur votre numéro</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" onclick="printReceipt()">
+                        <i class="fas fa-print"></i> Imprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de facture -->
+    <div class="modal fade" id="invoiceModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Facture de paiement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="invoiceContent">
+                    <div class="text-center mb-4">
+                        <img src="assets/images/hospital-logo.png" alt="Logo Hôpital" style="height: 60px;">
+                        <h4>Hôpital Central</h4>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Détails du paiement</h6>
+                            <p>Date: <span id="invoiceDate"></span></p>
+                            <p>Numéro de facture: <span id="invoiceNumber"></span></p>
+                            <p>Motif: <span id="invoiceMotif"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Patient</h6>
+                            <p>Nom: <span id="invoicePatient"></span></p>
+                            <p>ID: <span id="invoicePatientId"></span></p>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Montant</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span id="invoiceMotifDetail"></span></td>
+                                    <td><span id="invoiceAmount"></span> FCFA</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Total</th>
+                                    <th><span id="invoiceTotal"></span> FCFA</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="text-center mt-4">
+                        <p>Méthode de paiement: <span id="invoiceMethod"></span></p>
+                        <p>Statut: <span class="badge bg-success">Payé</span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" onclick="printInvoice()">
+                        <i class="fas fa-print"></i> Imprimer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template de facture pour l'impression -->
+    <div id="printableInvoice" style="display: none;">
+        <div class="invoice-header">
+            <img src="assets/images/hospital-logo.png" alt="Logo Hôpital" style="height: 80px;">
+            <h2>Hôpital Central</h2>
+            <p>123 Avenue de la Santé, Kinshasa</p>
+            <p>Tél: +243 123 456 789</p>
+        </div>
+        
+        <div class="invoice-details">
+            <div class="row">
+                <div class="col-6">
+                    <h4>Facture à</h4>
+                    <p><strong>Patient:</strong> <span id="printPatient"></span></p>
+                    <p><strong>ID Patient:</strong> <span id="printPatientId"></span></p>
+                </div>
+                <div class="col-6 text-end">
+                    <h4>Détails de la facture</h4>
+                    <p><strong>N° Facture:</strong> <span id="printInvoiceNumber"></span></p>
+                    <p><strong>Date:</strong> <span id="printDate"></span></p>
+                    <p><strong>Statut:</strong> <span class="badge bg-success">Payé</span></p>
+                </div>
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span id="printMotif"></span></td>
+                    <td><span id="printAmount"></span></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <th><span id="printTotal"></span></th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="invoice-footer">
+            <p><strong>Méthode de paiement:</strong> <span id="printMethod"></span></p>
+            <p>Merci de votre confiance</p>
+            <p>Cette facture est une preuve de paiement officielle</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // Variables globales
-        let invoiceItems = [];
-        let currentTotal = 0;
+        // Fonction pour exporter les paiements
+        function exportPayments() {
+            alert('Exportation des paiements...');
+        }
 
-        // Ajouter un article à la facture
-        function addInvoiceItem() {
-            const item = {
-                id: Date.now(),
-                description: '',
-                quantity: 1,
-                price: 0
+        // Fonction pour rafraîchir la liste
+        function refreshPayments() {
+            loadPayments();
+            alert('Liste actualisée');
+        }
+
+        // Fonction pour afficher les détails de paiement selon la méthode sélectionnée
+        function showPaymentDetails() {
+            const method = document.getElementById('paymentMethod').value;
+            document.querySelectorAll('.payment-details').forEach(el => el.style.display = 'none');
+            
+            if (method === 'card') {
+                document.getElementById('cardDetails').style.display = 'block';
+            } else if (method === 'orange') {
+                document.getElementById('orangeDetails').style.display = 'block';
+            } else if (method === 'transfer') {
+                document.getElementById('transferDetails').style.display = 'block';
+            }
+        }
+
+        // Fonction pour mettre à jour le placeholder du montant selon la devise
+        function updateAmountPlaceholder() {
+            const devise = document.querySelector('select[name="devise"]').value;
+            const amountInput = document.querySelector('input[name="amount"]');
+            amountInput.placeholder = devise === 'CDF' ? 'Montant en Francs Congolais' : 'Montant en Dollars';
+        }
+
+        // Fonction pour traiter le paiement
+        function processPayment(method, amount, devise, patient, motif) {
+            const submitButton = document.querySelector('#paymentForm button[type="submit"]');
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Traitement en cours...';
+            submitButton.disabled = true;
+
+            // Générer un numéro de facture
+            const invoiceNumber = 'INV-' + Date.now().toString().slice(-6);
+            const paymentId = 'PAY-' + Date.now().toString().slice(-6);
+            const patientName = document.querySelector('select[name="patient_id"] option:checked').text;
+            const currentDate = new Date().toLocaleString();
+            
+            // Créer le nouveau paiement
+            const newPayment = {
+                id: paymentId,
+                patient: patientName,
+                amount: amount,
+                devise: devise,
+                date: currentDate,
+                method: method === 'orange' ? 'Orange Money' : 
+                       method === 'card' ? 'Carte bancaire' : 
+                       method === 'transfer' ? 'Virement bancaire' : 'Espèces',
+                status: 'Complété',
+                motif: motif,
+                invoiceNumber: invoiceNumber
             };
-            invoiceItems.push(item);
-            updateInvoiceItems();
-        }
 
-        // Mettre à jour l'affichage des articles
-        function updateInvoiceItems() {
-            const itemsList = document.getElementById('itemsList');
-            itemsList.innerHTML = '';
+            // Récupérer les paiements existants
+            let payments = JSON.parse(localStorage.getItem('payments')) || [];
+            
+            // Ajouter le nouveau paiement au début de la liste
+            payments.unshift(newPayment);
+            
+            // Sauvegarder dans le localStorage
+            localStorage.setItem('payments', JSON.stringify(payments));
 
-            invoiceItems.forEach((item, index) => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'invoice-item';
-                itemElement.innerHTML = `
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Description" 
-                               value="${item.description}" onchange="updateItem(${index}, 'description', this.value)">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" class="form-control" placeholder="Qté" 
-                               value="${item.quantity}" onchange="updateItem(${index}, 'quantity', this.value)">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="number" class="form-control" placeholder="Prix" 
-                               value="${item.price}" onchange="updateItem(${index}, 'price', this.value)">
-                    </div>
-                    <div class="col-md-2">
-                        <span class="text-primary">$${(item.quantity * item.price).toFixed(2)}</span>
-                    </div>
-                    <div class="col-md-1">
-                        <i class="fas fa-times remove-item" onclick="removeItem(${index})"></i>
-                    </div>
-                `;
-                itemsList.appendChild(itemElement);
+            // Afficher une notification de succès
+            Swal.fire({
+                icon: 'success',
+                title: 'Paiement enregistré !',
+                text: 'Redirection vers la page des paiements...',
+                showConfirmButton: false,
+                timer: 2000
+            }).then(() => {
+                // Rediriger vers la page des paiements
+                window.location.href = 'paiement.php';
             });
-
-            updateTotals();
         }
 
-        // Mettre à jour un article
-        function updateItem(index, field, value) {
-            invoiceItems[index][field] = value;
-            updateTotals();
-        }
+        // Fonction pour sauvegarder un nouveau paiement
+        function savePayment() {
+            const method = document.getElementById('paymentMethod').value;
+            const amount = document.querySelector('input[name="amount"]').value;
+            const devise = document.querySelector('select[name="devise"]').value;
+            const patient = document.querySelector('select[name="patient_id"]').value;
+            const motif = document.querySelector('select[name="motif"]').value;
 
-        // Supprimer un article
-        function removeItem(index) {
-            invoiceItems.splice(index, 1);
-            updateInvoiceItems();
-        }
-
-        // Mettre à jour les totaux
-        function updateTotals() {
-            currentTotal = invoiceItems.reduce((sum, item) => sum + (item.quantity * item.price), 0);
-            const tax = currentTotal * 0.20;
-            const total = currentTotal + tax;
-
-            document.getElementById('subtotal').textContent = `$${currentTotal.toFixed(2)}`;
-            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
-        }
-
-        // Afficher les méthodes de paiement
-        function showPaymentMethods() {
-            if (currentTotal <= 0) {
+            if (!amount || !devise || !patient || !motif) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Erreur',
-                    text: 'Veuillez ajouter au moins un article à la facture'
+                    text: 'Veuillez remplir tous les champs obligatoires'
                 });
                 return;
             }
 
-            // Mettre à jour le montant Orange Money
-            const total = document.getElementById('total').textContent;
-            document.getElementById('orangeAmount').value = total;
+            if (method === 'orange') {
+                const phoneNumber = document.querySelector('#orangeDetails input[placeholder="+225 07 07 07 07 07"]').value;
+                if (!phoneNumber) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: 'Veuillez entrer votre numéro Orange Money'
+                    });
+                    return;
+                }
 
-            document.getElementById('paymentMethodsModal').style.display = 'block';
-        }
-
-        // Fermer les méthodes de paiement
-        function closePaymentMethods() {
-            document.getElementById('paymentMethodsModal').style.display = 'none';
-        }
-
-        // Fonctions Orange Money
-        function requestOrangePayment() {
-            const orangeNumber = document.getElementById('orangeNumber').value;
-
-            if (!orangeNumber) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Erreur',
-                    text: 'Veuillez entrer votre numéro Orange Money'
-                });
+                // Afficher le modal de code PIN
+                new bootstrap.Modal(document.getElementById('orangeConfirmModal')).show();
                 return;
             }
 
-            // Fermer le modal de paiement
-            closePaymentMethods();
-
-            // Afficher le modal de mot de passe
-            const orangePasswordModal = new bootstrap.Modal(document.getElementById('orangePasswordModal'));
-            orangePasswordModal.show();
-
-            // Focus sur le champ de mot de passe
-            setTimeout(() => {
-                document.getElementById('orangePassword').focus();
-            }, 500);
+            processPayment(method, amount, devise, patient, motif);
         }
 
+        // Fonction pour confirmer le paiement Orange Money
         function confirmOrangePayment() {
             const password = document.getElementById('orangePassword').value;
-            const orangeNumber = document.getElementById('orangeNumber').value;
-            const amount = document.getElementById('orangeAmount').value;
+            const phoneNumber = document.querySelector('#orangeDetails input[placeholder="+225 07 07 07 07 07"]').value;
+            const amount = document.querySelector('input[name="amount"]').value;
+            const devise = document.querySelector('select[name="devise"]').value;
+            const patient = document.querySelector('select[name="patient_id"]').value;
+            const motif = document.querySelector('select[name="motif"]').value;
 
             if (password.length !== 4) {
                 Swal.fire({
@@ -661,7 +801,7 @@
             }
 
             // Fermer le modal de mot de passe
-            bootstrap.Modal.getInstance(document.getElementById('orangePasswordModal')).hide();
+            bootstrap.Modal.getInstance(document.getElementById('orangeConfirmModal')).hide();
 
             // Afficher la demande de confirmation
             Swal.fire({
@@ -671,8 +811,8 @@
                         <div class="orange-money-logo mb-3">
                             <i class="fas fa-wallet"></i>
                         </div>
-                        <p>Voulez-vous confirmer le paiement de <strong>${amount}</strong> ?</p>
-                        <p class="text-muted">Numéro: ${orangeNumber}</p>
+                        <p>Voulez-vous confirmer le paiement de <strong>${amount} ${devise}</strong> ?</p>
+                        <p class="text-muted">Numéro: ${phoneNumber}</p>
                     </div>
                 `,
                 icon: 'warning',
@@ -698,15 +838,22 @@
 
                     // Simuler un délai de traitement
                     setTimeout(() => {
-                        showOrangeReceipt(orangeNumber, amount);
+                        showOrangeReceipt(phoneNumber, amount, devise, motif);
                     }, 3000);
                 }
             });
         }
 
-        function showOrangeReceipt(number, amount) {
+        function showOrangeReceipt(number, amount, devise, motif) {
             const date = new Date().toLocaleString();
             const transactionId = 'OM' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const motifText = {
+                'echographie': 'Échographie',
+                'consultation': 'Consultation médicale',
+                'analyse': 'Analyse médicale',
+                'operation': 'Opération chirurgicale',
+                'medicament': 'Médicaments'
+            }[motif] || motif;
 
             Swal.fire({
                 title: 'Paiement réussi !',
@@ -725,8 +872,12 @@
                                 <strong>${number}</strong>
                             </div>
                             <div class="receipt-row">
+                                <span>Motif</span>
+                                <strong>${motifText}</strong>
+                            </div>
+                            <div class="receipt-row">
                                 <span>Montant</span>
-                                <strong>${amount}</strong>
+                                <strong>${amount} ${devise}</strong>
                             </div>
                             <div class="receipt-row">
                                 <span>Date</span>
@@ -743,37 +894,171 @@
                         </div>
                     </div>
                 `,
-                confirmButtonText: 'Retour à la facturation',
+                confirmButtonText: 'Retour à la liste',
                 allowOutsideClick: false,
                 confirmButtonColor: '#28a745'
             }).then(() => {
-                // Réinitialiser le formulaire
-                invoiceItems = [];
-                updateInvoiceItems();
-                document.getElementById('invoiceForm').reset();
+                // Traiter le paiement et rediriger
+                processPayment('orange', amount, devise, patient, motif);
             });
         }
 
-        // Formater automatiquement le numéro de carte
-        document.querySelector('input[placeholder="1234 5678 9012 3456"]').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
-            let newValue = '';
-            for(let i = 0; i < value.length; i++) {
-                if(i > 0 && i % 4 === 0) {
-                    newValue += ' ';
-                }
-                newValue += value[i];
-            }
-            e.target.value = newValue;
-        });
+        // Fonction pour charger la liste des paiements
+        function loadPayments() {
+            // Récupérer les paiements du localStorage
+            let payments = JSON.parse(localStorage.getItem('payments')) || [];
+            
+            const container = document.getElementById('paymentsList');
+            container.innerHTML = payments.map(payment => `
+                <tr>
+                    <td>${payment.id}</td>
+                    <td>${payment.patient}</td>
+                    <td>${payment.amount} ${payment.devise}</td>
+                    <td>${payment.date}</td>
+                    <td>${payment.method}</td>
+                    <td>
+                        <span class="badge ${payment.status === 'Complété' ? 'bg-success' : 'bg-warning'}">
+                            ${payment.status}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="editPayment('${payment.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deletePayment('${payment.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
 
-        // Formater automatiquement la date d'expiration
-        document.querySelector('input[placeholder="MM/AA"]').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
-            if(value.length > 2) {
-                value = value.substr(0,2) + '/' + value.substr(2);
+        // Fonction pour supprimer un paiement
+        function deletePayment(paymentId) {
+            Swal.fire({
+                title: 'Êtes-vous sûr ?',
+                text: "Cette action est irréversible !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Oui, supprimer',
+                cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Récupérer les paiements
+                    let payments = JSON.parse(localStorage.getItem('payments')) || [];
+                    
+                    // Filtrer le paiement à supprimer
+                    payments = payments.filter(payment => payment.id !== paymentId);
+                    
+                    // Sauvegarder les paiements mis à jour
+                    localStorage.setItem('payments', JSON.stringify(payments));
+                    
+                    // Recharger la liste
+                    loadPayments();
+                    
+                    Swal.fire(
+                        'Supprimé !',
+                        'Le paiement a été supprimé avec succès.',
+                        'success'
+                    );
+                }
+            });
+        }
+
+        // Fonction pour éditer un paiement
+        function editPayment(paymentId) {
+            // Récupérer les paiements
+            let payments = JSON.parse(localStorage.getItem('payments')) || [];
+            
+            // Trouver le paiement à éditer
+            const payment = payments.find(p => p.id === paymentId);
+            
+            if (payment) {
+                // Afficher le modal d'édition avec les données du paiement
+                Swal.fire({
+                    title: 'Modifier le paiement',
+                    html: `
+                        <form id="editPaymentForm">
+                            <div class="mb-3">
+                                <label class="form-label">Montant</label>
+                                <input type="number" class="form-control" id="editAmount" value="${payment.amount}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Statut</label>
+                                <select class="form-select" id="editStatus">
+                                    <option value="Complété" ${payment.status === 'Complété' ? 'selected' : ''}>Complété</option>
+                                    <option value="En attente" ${payment.status === 'En attente' ? 'selected' : ''}>En attente</option>
+                                </select>
+                            </div>
+                        </form>
+                    `,
+                    showCancelButton: true,
+                    confirmButtonText: 'Enregistrer',
+                    cancelButtonText: 'Annuler',
+                    preConfirm: () => {
+                        const amount = document.getElementById('editAmount').value;
+                        const status = document.getElementById('editStatus').value;
+                        
+                        // Mettre à jour le paiement
+                        payment.amount = amount;
+                        payment.status = status;
+                        
+                        // Sauvegarder les modifications
+                        localStorage.setItem('payments', JSON.stringify(payments));
+                        
+                        // Recharger la liste
+                        loadPayments();
+                        
+                        return true;
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Modifié !',
+                            'Le paiement a été modifié avec succès.',
+                            'success'
+                        );
+                    }
+                });
             }
-            e.target.value = value;
+        }
+
+        // Fonction pour imprimer la facture
+        function printInvoice() {
+            const printContent = document.getElementById('invoiceContent').innerHTML;
+            const originalContent = document.body.innerHTML;
+
+            document.body.innerHTML = `
+                <div class="container mt-4">
+                    ${printContent}
+                </div>
+            `;
+
+            window.print();
+            document.body.innerHTML = originalContent;
+            loadPayments();
+        }
+
+        // Fonction pour imprimer le reçu
+        function printReceipt() {
+            const printContent = document.querySelector('.orange-money-receipt').innerHTML;
+            const originalContent = document.body.innerHTML;
+
+            document.body.innerHTML = `
+                <div class="container mt-4">
+                    ${printContent}
+                </div>
+            `;
+
+            window.print();
+            document.body.innerHTML = originalContent;
+        }
+
+        // Charger les paiements au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPayments();
         });
     </script>
 </body>

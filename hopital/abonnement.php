@@ -213,6 +213,14 @@
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/hospital-logo.png" alt="Logo Hôpital">
+            <h3>Hôpital Central</h3>
+        </div>
+    </div>
+
     <div class="subscription-container">
         <div class="subscription-header">
             <h1>Choisissez votre abonnement</h1>

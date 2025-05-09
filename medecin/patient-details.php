@@ -355,9 +355,12 @@
     </div>
 
     <div class="main-content">
-        <a href="patients.php" class="btn-back">
-            <i class="fas fa-arrow-left"></i> Retour à la liste
-        </a>
+        <div class="action-buttons">
+            <a href="patients.php" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                Retour à la liste des patients
+            </a>
+        </div>
 
         <div id="patientContent">
             <!-- Le contenu sera chargé dynamiquement -->
@@ -805,6 +808,20 @@
             
             printWindow.document.close();
             printWindow.print();
+        }
+
+        // Fonction pour éditer un traitement
+        function editTreatment(button) {
+            const row = button.closest('tr');
+            const treatmentId = row.dataset.id;
+            // Code existant pour l'édition
+        }
+
+        // Fonction pour supprimer un traitement
+        function deleteTreatment(button) {
+            const row = button.closest('tr');
+            const treatmentId = row.dataset.id;
+            // Code existant pour la suppression
         }
     </script>
 </body>

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paramètres - Administration Hospitalière</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Paramètres - DOPAHO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <style>
         :root {
             --primary-color: #003366;
@@ -304,235 +305,199 @@
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
-            <img src="https://via.placeholder.com/80" alt="Logo Hôpital">
+            <img src="assets/images/hospital-logo.png" alt="Logo Hôpital">
             <h3>Hôpital Central</h3>
         </div>
-        <a href="index.php"><i class="fas fa-home"></i> Tableau de Bord</a>
-        <a href="medecin.php"><i class="fas fa-user-md"></i> Médecins</a>
-        <a href="hoppat.php"><i class="fas fa-procedures"></i> Patients</a>
-        <a href="rdv.php"><i class="fas fa-calendar-check"></i> Rendez-vous</a>
-        <a href="notif.php"><i class="fas fa-bell"></i> Notifications <span class="notification-badge">3</span></a>
-        <a href="paiement.php"><i class="fas fa-money-bill-wave"></i> Paiements</a>
-        <a href="abonnement.php">
-            <i class="fas fa-crown"></i>
-            Abonnement
-        </a>
-
-        <a href="parametre.php" class="active"><i class="fas fa-cog"></i> Paramètres</a>
-
+        <nav>
+            <a href="index.php">
+                <i class="fas fa-home"></i>
+                Tableau de bord
+            </a>
+            <a href="hoppat.php">
+                <i class="fas fa-users"></i>
+                Patients
+            </a>
+            <a href="medecin.php">
+                <i class="fas fa-user-md"></i>
+                Médecins
+            </a>
+            <a href="rdv.php">
+                <i class="fas fa-calendar-check"></i>
+                Rendez-vous
+            </a>
+            <a href="notif.php">
+                <i class="fas fa-bell"></i>
+                Notifications
+            </a>
+            <a href="paiement.php">
+                <i class="fas fa-money-bill-wave"></i>
+                Paiements
+            </a>
+            <a href="abonnement.php">
+                <i class="fas fa-crown"></i>
+                Abonnement
+            </a>
+            <a href="parametre.php" class="active">
+                <i class="fas fa-cog"></i>
+                Paramètres
+            </a>
+        </nav>
         <div class="user-profile">
-            <img src="https://via.placeholder.com/40" alt="Admin">
+            <img src="assets/images/admin-avatar.png" alt="Admin">
             <div class="user-info">
-                <h6>Dr. Admin</h6>
+                <h6>Admin</h6>
                 <small>Administrateur</small>
             </div>
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="main-content">
         <div class="welcome-section">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h2>Paramètres</h2>
-                    <p class="text-muted">Gérez vos préférences et paramètres</p>
-                </div>
-            </div>
+            <h2>Paramètres</h2>
+            <p>Configurez les paramètres de votre établissement</p>
         </div>
 
+        <!-- Settings Sections -->
         <div class="row">
             <div class="col-md-6">
-                <div class="settings-card">
-                    <div class="settings-header">
-                        <div class="settings-icon icon-profile">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <h3 class="settings-title">Profil</h3>
-                            <p class="settings-description">Gérez vos informations personnelles</p>
-                        </div>
-                    </div>
-                    <form>
-                        <div class="form-group">
-                            <label class="form-label">Photo de profil</label>
-                            <div class="d-flex align-items-center">
-                                <img src="https://via.placeholder.com/100" alt="Profile" class="rounded-circle me-3" style="width: 100px; height: 100px;">
-                                <button type="button" class="btn btn-outline-primary">Changer</button>
+                <!-- Profile Settings -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Profil de l'établissement</h5>
+                        <form id="profileForm">
+                            <div class="mb-3">
+                                <label class="form-label">Nom de l'établissement</label>
+                                <input type="text" class="form-control" value="DOPAHO" required>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Nom complet</label>
-                            <input type="text" class="form-control" value="Dr. Admin">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" value="admin@hopital.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Téléphone</label>
-                            <input type="tel" class="form-control" value="+33 6 12 34 56 78">
-                        </div>
-                        <button type="submit" class="btn btn-save">Enregistrer les modifications</button>
-                    </form>
+                            <div class="mb-3">
+                                <label class="form-label">Adresse</label>
+                                <textarea class="form-control" rows="2" required>123 Rue de la Santé, 75000 Paris</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Téléphone</label>
+                                <input type="tel" class="form-control" value="01 23 45 67 89" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" value="contact@dopaho.com" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Paramètres de notification</h5>
+                        <form id="notificationForm">
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                    <label class="form-check-label" for="emailNotifications">Notifications par email</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="smsNotifications">
+                                    <label class="form-check-label" for="smsNotifications">Notifications par SMS</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="appNotifications" checked>
+                                    <label class="form-check-label" for="appNotifications">Notifications dans l'application</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="settings-card">
-                    <div class="settings-header">
-                        <div class="settings-icon icon-security">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div>
-                            <h3 class="settings-title">Sécurité</h3>
-                            <p class="settings-description">Gérez votre mot de passe et la sécurité</p>
-                        </div>
-                    </div>
-                    <form>
-                        <div class="form-group">
-                            <label class="form-label">Mot de passe actuel</label>
-                            <input type="password" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Nouveau mot de passe</label>
-                            <input type="password" class="form-control" id="newPassword">
-                            <div class="password-strength">
-                                <div class="strength-bar strength-weak"></div>
+                <!-- Security Settings -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sécurité</h5>
+                        <form id="securityForm">
+                            <div class="mb-3">
+                                <label class="form-label">Mot de passe actuel</label>
+                                <input type="password" class="form-control" required>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Confirmer le mot de passe</label>
-                            <input type="password" class="form-control">
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="twoFactor">
-                            <label class="form-check-label" for="twoFactor">Activer l'authentification à deux facteurs</label>
-                        </div>
-                        <button type="submit" class="btn btn-save">Mettre à jour la sécurité</button>
-                    </form>
+                            <div class="mb-3">
+                                <label class="form-label">Nouveau mot de passe</label>
+                                <input type="password" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Confirmer le mot de passe</label>
+                                <input type="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Changer le mot de passe</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="settings-card">
-                    <div class="settings-header">
-                        <div class="settings-icon icon-notifications">
-                            <i class="fas fa-bell"></i>
-                        </div>
-                        <div>
-                            <h3 class="settings-title">Notifications</h3>
-                            <p class="settings-description">Gérez vos préférences de notifications</p>
-                        </div>
-                    </div>
-                    <form>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="emailNotif" checked>
-                            <label class="form-check-label" for="emailNotif">Notifications par email</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="smsNotif" checked>
-                            <label class="form-check-label" for="smsNotif">Notifications par SMS</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="appNotif" checked>
-                            <label class="form-check-label" for="appNotif">Notifications dans l'application</label>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label class="form-label">Types de notifications</label>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="notifRdv" checked>
-                                <label class="form-check-label" for="notifRdv">Rendez-vous</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="notifUrgence" checked>
-                                <label class="form-check-label" for="notifUrgence">Urgences</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="notifSystem" checked>
-                                <label class="form-check-label" for="notifSystem">Mises à jour système</label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-save">Enregistrer les préférences</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="settings-card">
-                    <div class="settings-header">
-                        <div class="settings-icon icon-appearance">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <div>
-                            <h3 class="settings-title">Apparence</h3>
-                            <p class="settings-description">Personnalisez l'apparence de l'interface</p>
-                        </div>
-                    </div>
-                    <form>
-                        <div class="form-group">
-                            <label class="form-label">Thème</label>
-                            <div class="theme-selector">
-                                <div class="theme-option theme-light active"></div>
-                                <div class="theme-option theme-dark"></div>
-                                <div class="theme-option theme-blue"></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Taille de police</label>
-                            <select class="form-control">
-                                <option>Petite</option>
-                                <option selected>Moyenne</option>
-                                <option>Grande</option>
+                <!-- Backup Settings -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Sauvegarde</h5>
+                        <div class="mb-3">
+                            <label class="form-label">Fréquence de sauvegarde</label>
+                            <select class="form-select">
+                                <option value="daily">Quotidienne</option>
+                                <option value="weekly">Hebdomadaire</option>
+                                <option value="monthly">Mensuelle</option>
                             </select>
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="compactMode">
-                            <label class="form-check-label" for="compactMode">Mode compact</label>
+                        <div class="mb-3">
+                            <button class="btn btn-outline-primary" onclick="backupNow()">
+                                <i class="fas fa-download"></i>
+                                Sauvegarder maintenant
+                            </button>
                         </div>
-                        <button type="submit" class="btn btn-save">Appliquer les changements</button>
-                    </form>
+                        <div class="mb-3">
+                            <button class="btn btn-outline-secondary" onclick="restoreBackup()">
+                                <i class="fas fa-upload"></i>
+                                Restaurer une sauvegarde
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Animation des cartes au survol
-        document.querySelectorAll('.settings-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
+        // Fonction pour sauvegarder maintenant
+        function backupNow() {
+            alert('Sauvegarde en cours...');
+        }
+
+        // Fonction pour restaurer une sauvegarde
+        function restoreBackup() {
+            alert('Restauration de la sauvegarde...');
+        }
+
+        // Gestion des formulaires
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profil mis à jour avec succès!');
         });
 
-        // Gestion de la force du mot de passe
-        const passwordInput = document.getElementById('newPassword');
-        const strengthBar = document.querySelector('.strength-bar');
-
-        passwordInput.addEventListener('input', function() {
-            const password = this.value;
-            let strength = 0;
-
-            if (password.length >= 8) strength++;
-            if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
-            if (password.match(/\d/) && password.match(/[^a-zA-Z\d]/)) strength++;
-
-            strengthBar.className = 'strength-bar';
-            if (strength === 1) strengthBar.classList.add('strength-weak');
-            else if (strength === 2) strengthBar.classList.add('strength-medium');
-            else if (strength === 3) strengthBar.classList.add('strength-strong');
+        document.getElementById('notificationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Paramètres de notification mis à jour!');
         });
 
-        // Gestion des thèmes
-        document.querySelectorAll('.theme-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
-                this.classList.add('active');
-            });
+        document.getElementById('securityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mot de passe modifié avec succès!');
         });
     </script>
 </body>
